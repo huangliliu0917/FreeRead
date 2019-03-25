@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_button1"
+        android:padding="@dimen/space15"
+        android:layout_margin="@dimen/space15"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="微信多开"
+            android:textSize="@dimen/font16"
+            android:textColor="@color/colorGray3"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space105"
+            android:layout_marginTop="@dimen/space15"
+            android:orientation="horizontal">
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/shape_border"
+                android:padding="@dimen/space15">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:src="@mipmap/icon_tianjia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:layout_marginBottom="@dimen/space10"/>
+
+                    <TextView
+                        android:text="添加微信"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/shape_border"
+                android:padding="@dimen/space10">
+
+
+                <ImageView
+                    android:src="@mipmap/img_touxiang"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"/>
+
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space15"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:src="@mipmap/icon_zhuyi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/space5"/>
+
+
+            <TextView
+                android:text="微信多开功能最多可同时开启2个微信"
+                android:textSize="@dimen/font12"
+                android:textColor="@color/colorGray"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_button1"
+        android:orientation="vertical"
+        android:padding="@dimen/space15"
+        android:layout_margin="@dimen/space15">
+
+
+        <TextView
+            android:text="自动抢红包"
+            android:textSize="@dimen/font16"
+            android:textColor="@color/colorGray3"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space15"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:text="自动抢红包赚钱"
+                android:textColor="#f13b68"
+                android:textSize="@dimen/font16"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:text="(微信版)"
+                android:textColor="@color/colorGray"
+                android:textSize="@dimen/font14"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space15"/>
+
+
+        <TextView
+            android:text="自动阅读APP已为你累计抢到0个红包"
+            android:textSize="@dimen/font12"
+            android:textColor="@color/colorGray"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space15"/>
+
+
+        <TextView
+            android:id="@+id/btn_home_startMakeMoney"
+            android:text="开始自动抢红包"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/font14"
+            android:paddingTop="@dimen/space10"
+            android:paddingBottom="@dimen/space10"
+            android:paddingRight="@dimen/space20"
+            android:paddingLeft="@dimen/space20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#e64340"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space15"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:src="@mipmap/icon_zhuyi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/space5"/>
+
+
+            <TextView
+                android:text="微信多开功能最多可同时开启2个微信"
+                android:textSize="@dimen/font12"
+                android:textColor="@color/colorGray"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

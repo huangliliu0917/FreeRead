@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/news_item1_layout2"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/space15"
+    android:paddingRight="@dimen/space15"
+    android:paddingTop="@dimen/space15">
+
+    <TextView
+        android:id="@+id/news_item2_title"
+        android:text="吉林延边：中俄边境发生森林火灾向我国边境"
+        android:textSize="@dimen/font18"
+        android:textColor="@color/colorGray3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/space15">
+
+        <ImageView
+            android:id="@+id/news_item2_img"
+            android:src="@mipmap/img_xinwentupian3"
+            android:adjustViewBounds="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="@dimen/space5" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/space15">
+
+        <TextView
+            android:id="@+id/news_item2_author"
+            android:text="央视网"
+            android:textSize="@dimen/font12"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/news_item2_haoping"
+            android:text="13评"
+            android:textSize="@dimen/font12"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/space15"/>
+
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space1"
+        android:background="@color/colorGray2"
+        android:layout_marginTop="@dimen/space15"/>
+
+</LinearLayout>

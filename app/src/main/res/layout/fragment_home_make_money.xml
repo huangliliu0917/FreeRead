@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space300"
+                android:orientation="vertical"
+                android:padding="@dimen/space15"
+                android:background="@color/textSelect">
+
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:text="已为您自动赚钱（金币）"
+                            android:textSize="@dimen/font16"
+                            android:textColor="@color/colorWhite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"/>
+
+
+                        <TextView
+                            android:id="@+id/btn_home_makeMoney_tixian"
+                            android:text="提现"
+                            android:textColor="@color/colorWhite"
+                            android:paddingBottom="@dimen/space5"
+                            android:paddingTop="@dimen/space5"
+                            android:paddingLeft="@dimen/space15"
+                            android:paddingRight="@dimen/space15"
+                            android:textSize="@dimen/font16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:background="@drawable/shape_button"/>
+
+
+                    </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/space15"
+                    android:paddingBottom="@dimen/space15">
+
+                    <TextView
+                        android:id="@+id/home_login_sates"
+                        android:text="已登录"
+                        android:textSize="@dimen/font26"
+                        android:letterSpacing="1.2"
+                        android:textColor="@color/colorWhite"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:src="@mipmap/icon_jinqian"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingRight="@dimen/space5"/>
+
+
+                        <TextView
+                            android:text="今日收益："
+                            android:textSize="@dimen/font12"
+                            android:textColor="@color/colorWhite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"/>
+
+
+                        <TextView
+                            android:id="@+id/home_inputMoney_today"
+                            android:text="0"
+                            android:textSize="@dimen/font12"
+                            android:textColor="@color/colorWhite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"/>
+
+
+                        <TextView
+                            android:text="金币"
+                            android:textSize="@dimen/font12"
+                            android:textColor="@color/colorWhite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"/>
+
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:src="@mipmap/icon_jinqian"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingRight="@dimen/space5"/>
+
+
+                        <TextView
+                            android:text="累计收益："
+                            android:textSize="@dimen/font12"
+                            android:textColor="@color/colorWhite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"/>
+
+
+                        <TextView
+                            android:id="@+id/home_inputMoney_all"
+                            android:text="0"
+                            android:textSize="@dimen/font12"
+                            android:textColor="@color/colorWhite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"/>
+
+
+                        <TextView
+                            android:text="金币"
+                            android:textSize="@dimen/font12"
+                            android:textColor="@color/colorWhite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"/>
+
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space15"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_button1"
+                    android:orientation="vertical"
+                    android:padding="@dimen/space15">
+
+
+                    <TextView
+                        android:text="暂不使用手机时，将自动为您赚钱"
+                        android:textColor="#f13b68"
+                        android:textSize="@dimen/font16"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/space15"/>
+
+
+                    <TextView
+                        android:id="@+id/btn_home_startMakeMoney"
+                        android:text="开始自动赚钱"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/font14"
+                        android:paddingTop="@dimen/space10"
+                        android:paddingBottom="@dimen/space10"
+                        android:paddingRight="@dimen/space20"
+                        android:paddingLeft="@dimen/space20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="#e64340"/>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/space15"/>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:src="@mipmap/icon_zhuyi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingRight="@dimen/space5"/>
+
+
+                        <TextView
+                            android:text="微信多开功能最多可同时开启2个微信"
+                            android:textSize="@dimen/font12"
+                            android:textColor="@color/colorGray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <!--海报图片-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@mipmap/img_haibaotu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"/>
+
+            </LinearLayout>
+            <!--海报图片-->
+
+
+            <!--菜单选项-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space15"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/btn_home_qiandao"
+                        android:button="@null"
+                        android:text="签到"
+                        android:textColor="@color/colorGray"
+                        android:drawableTop="@mipmap/icon_qiandao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:drawablePadding="@dimen/space5"/>
+
+
+                    <RadioButton
+                        android:id="@+id/btn_home_lingjiangli"
+                        android:button="@null"
+                        android:text="领奖励"
+                        android:textColor="@color/colorGray"
+                        android:drawableTop="@mipmap/icon_linjiangli"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:drawablePadding="@dimen/space5"/>
+
+                    <RadioButton
+                        android:id="@+id/btn_home_yueduzhuanqian"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:drawableTop="@mipmap/icon_yueduzhuanqian"
+                        android:drawablePadding="@dimen/space5"
+                        android:gravity="center"
+                        android:text="阅读赚钱"
+                        android:textColor="@color/colorGray" />
+
+                    <RadioButton
+                        android:id="@+id/btn_home_yaoqingzhuanqian"
+                        android:button="@null"
+                        android:text="邀请赚钱"
+                        android:textColor="@color/colorGray"
+                        android:drawableTop="@mipmap/icon_yaoqingzhuanqian"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:drawablePadding="@dimen/space5"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space15"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/btn_home_weixinduokai"
+                        android:button="@null"
+                        android:text="微信多开"
+                        android:textColor="@color/colorGray"
+                        android:drawableTop="@mipmap/icon_weixinduokai"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:drawablePadding="@dimen/space5"/>
+
+
+                    <RadioButton
+                        android:id="@+id/btn_home_qianghongbao"
+                        android:button="@null"
+                        android:text="抢红包"
+                        android:textColor="@color/colorGray"
+                        android:drawableTop="@mipmap/icon_qiaohongbao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:drawablePadding="@dimen/space5"/>
+
+                    <RadioButton
+                        android:id="@+id/btn_home_kuaisutixian"
+                        android:button="@null"
+                        android:text="快速提现"
+                        android:textColor="@color/colorGray"
+                        android:drawableTop="@mipmap/icon_kuaisutixian"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:drawablePadding="@dimen/space5"/>
+
+                    <RadioButton
+                        android:id="@+id/btn_home_jinrushangcheng"
+                        android:button="@null"
+                        android:text="进入商城"
+                        android:textColor="@color/colorGray"
+                        android:drawableTop="@mipmap/icon_jinrushangcheng"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:drawablePadding="@dimen/space5"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space15"/>
+
+            </LinearLayout>
+            <!--菜单选项-->
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
