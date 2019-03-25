@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activitys.Activity_AskQuestion"
+    android:background="@color/colorGray2">
+
+
+    <com.hjq.bar.TitleBar
+        android:id="@+id/askQuestion_titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.hjq.bar.TitleBar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="分类"
+            android:textSize="@dimen/font16"
+            android:textStyle="bold"
+            android:textColor="@color/colorGray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space15"
+            android:background="@color/colorGray2"/>
+
+        <RadioGroup
+            android:id="@+id/askQuestion_askType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space15"
+            android:background="@color/colorWhite"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/askQuestion_askWrong"
+                android:button="@null"
+                android:text="问题反馈"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RadioButton
+                android:id="@+id/askQuestion_askSuggest"
+                android:button="@null"
+                android:text="功能建议"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space30"
+                android:layout_marginRight="@dimen/space30"/>
+
+            <RadioButton
+                android:id="@+id/askQuestion_askOther"
+                android:button="@null"
+                android:text="其他"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RadioGroup>
+
+        <TextView
+            android:text="问题描述"
+            android:textSize="@dimen/font16"
+            android:textStyle="bold"
+            android:textColor="@color/colorGray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space15"
+            android:background="@color/colorGray2"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space15"
+            android:orientation="horizontal"
+            android:background="@color/colorWhite">
+
+            <EditText
+                android:id="@+id/askQuestion_askInfo"
+                android:hint="描述你的问题"
+                android:gravity="top"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space200"
+                android:background="@drawable/shape_button3"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:text="手机/QQ"
+            android:textSize="@dimen/font16"
+            android:textStyle="bold"
+            android:textColor="@color/colorGray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space15"
+            android:background="@color/colorGray2"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space100"
+            android:padding="@dimen/space15"
+            android:orientation="horizontal"
+            android:background="@color/colorWhite">
+
+            <EditText
+                android:id="@+id/askQuestion_askConnect"
+                android:hint="描述你的问题"
+                android:gravity="top"
+                android:maxLines="2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_button3"/>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/askQuestion_askCommit"
+                android:text="提交"
+                android:gravity="center"
+                android:textSize="@dimen/font20"
+                android:textColor="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/space20"
+                android:background="@drawable/shape_button2"
+                android:paddingTop="@dimen/space15"
+                android:paddingBottom="@dimen/space15"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

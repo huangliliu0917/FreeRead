@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activitys.Activity_OnlineHelper">
+
+
+    <com.hjq.bar.TitleBar
+        android:id="@+id/onlineHelper_titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.hjq.bar.TitleBar>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/onlineHelp_record"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+
+    </android.support.v7.widget.RecyclerView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGray2"
+        android:padding="@dimen/space15"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+
+        <ImageView
+            android:id="@+id/onlineHelp_yuyin"
+            android:src="@mipmap/icon_yuyin"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:adjustViewBounds="true"/>
+
+
+        <EditText
+            android:id="@+id/onlineHelp_textInput"
+            android:background="@drawable/shape_button3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space26"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/space15"
+            android:imeOptions="actionSend"
+            android:singleLine="true"/>
+
+
+        <ImageView
+            android:id="@+id/onlineHelp_faceInput"
+            android:src="@mipmap/icon_biaoqing"
+            android:layout_width="@dimen/space24"
+            android:layout_height="@dimen/space24"
+            android:adjustViewBounds="true"
+            android:layout_marginLeft="@dimen/space15"/>
+
+
+
+        <ImageView
+            android:id="@+id/onlineHelp_addInput"
+            android:src="@mipmap/icon_tianjia1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:layout_marginLeft="@dimen/space15"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

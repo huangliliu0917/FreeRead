@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">应用程序名</string>
+    <string name="app_name">免费阅读</string>
+    <string name="normalQuestion">• 积分将在用户完成评价后获得会根据订单实际支付金额和评价的质量发放</string>
+    <string name="normalQuestion1">• 每位用户每天最多可以获得2000积分，体验家的订单和评价不会增加积分</string>
+    <string name="normalQuestion2">可以在积分商城兑换各种礼品</string>
+    <string name="normalQuestion3">礼品从兑换日起，3个工作日（周末不算）内处理发货，发货后，通常会在3个工作日左右送达</string>
+    <string name="normalQuestion4">不会，手机充值卡兑换，是直接充值到您填写的手机号上，充值之前不会和您电话确认，所以您在填写电话的时候，请确认电话是否正确。</string>
 </resources>

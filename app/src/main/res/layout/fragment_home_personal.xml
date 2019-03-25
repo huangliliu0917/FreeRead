@@ -32,6 +32,7 @@
             android:layout_alignParentRight="true">
 
             <ImageView
+                android:id="@+id/btn_person_xiaoxi"
                 android:src="@mipmap/icon_xiaoxi"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -40,6 +41,7 @@
 
 
             <ImageView
+                android:id="@+id/btn_person_kefu"
                 android:src="@mipmap/icon_kefu"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -48,6 +50,7 @@
 
 
             <ImageView
+                android:id="@+id/btn_person_setting"
                 android:src="@mipmap/icon_shezhi"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -476,6 +479,7 @@
                 android:layout_height="@dimen/space5"/>
 
             <LinearLayout
+                android:id="@+id/person_inviteMakeMoney"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/space15"
@@ -519,6 +523,7 @@
                 android:layout_height="@dimen/space1"/>
 
             <LinearLayout
+                android:id="@+id/person_tixian"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/space15"
@@ -562,6 +567,7 @@
                 android:layout_height="@dimen/space5"/>
 
             <LinearLayout
+                android:id="@+id/person_normalProblem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/space15"
@@ -605,6 +611,7 @@
                 android:layout_height="@dimen/space1"/>
 
             <LinearLayout
+                android:id="@+id/person_askQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/space15"
@@ -646,6 +653,7 @@
                 android:layout_height="@dimen/space1"/>
 
             <LinearLayout
+                android:id="@+id/person_about"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/space15"

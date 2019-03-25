@@ -37,11 +37,10 @@ public class Activity_Home_NewsInfo extends AppCompatActivity {
         initView();
     }
 
-
     public void initView() {
 
         homeNewsInfoWeb.loadUrl("file:///android_asset/test.html");//加载asset文件夹下html
-        homeNewsInfoWeb.loadUrl("http://139.196.35.30:8080/OkHttpTest/apppackage/test.html");//加载url
+        homeNewsInfoWeb.loadUrl("http://www.baidu.com");//加载url
 
         //使用webview显示html代码
 //        webView.loadDataWithBaseURL(null,"<html><head><title> 欢迎您 </title></head>" +

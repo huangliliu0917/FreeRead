@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/rlTimeline"
+        android:layout_width="32dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/tvTopLine"
+            android:layout_width="@dimen/space0.5"
+            android:layout_height="@dimen/space12"
+            android:background="#999"
+            android:layout_marginBottom="@dimen/space5"/>
+
+        <TextView
+            android:id="@+id/tvDot"
+            android:layout_width="@dimen/space10"
+            android:layout_height="@dimen/space10"
+            android:background="@drawable/timelline_dot_normal" />
+
+        <TextView
+            android:layout_width="@dimen/space0.5"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tvDot"
+            android:background="#999"
+            android:layout_marginTop="@dimen/space5"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rlCenter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/space10"
+        android:layout_marginRight="@dimen/space10"
+        android:background="@drawable/shape_button3"
+        android:padding="@dimen/space5">
+
+        <TextView
+            android:id="@+id/tvAcceptTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="新老AirPods对比买与不买看完"
+            android:textColor="@color/colorGray"
+            android:textSize="@dimen/font18"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+
+        <TextView
+            android:id="@+id/tvAcceptStation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space5"
+            android:text="快件在 深圳 ,准备送往下一站 深圳集散中心 [深圳市]"
+            android:textColor="@color/colorGray4"
+            android:textSize="@dimen/font16"
+            android:ellipsize="end"
+            android:singleLine="true" />
+
+
+        <TextView
+            android:id="@+id/tvAccepTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space15"
+            android:text="03月21日     09:57"
+            android:textColor="@color/colorGray4"
+            android:textSize="@dimen/font14"
+            android:layout_marginBottom="@dimen/space15"/>
+
+
+    </LinearLayout>
+</LinearLayout>
