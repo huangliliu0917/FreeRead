@@ -1,6 +1,7 @@
 package com.yinglan.FreeRead.Activitys;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -26,8 +27,8 @@ public class Activity_Setting extends AppCompatActivity {
     TitleBar settingTitleBar;
     @BindView(R.id.person_read_set)
     LinearLayout personReadSet;
-    @BindView(R.id.person_setBankCard)
-    LinearLayout personSetBankCard;
+    @BindView(R.id.person_MyBankCard)
+    LinearLayout personMyBankCard;
     @BindView(R.id.setting_version)
     TextView settingVersion;
     @BindView(R.id.person_updateVersion)
@@ -38,6 +39,7 @@ public class Activity_Setting extends AppCompatActivity {
 
     private MaterialDialog normalDialog;
     private BaseAnimatorSet nBasIn,mBasOut;
+    private Intent intent;
 
 
     @Override
@@ -45,6 +47,7 @@ public class Activity_Setting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         ButterKnife.bind(this);
+        intent = new Intent();
         initView();
 
     }
@@ -74,12 +77,16 @@ public class Activity_Setting extends AppCompatActivity {
         });
     }
 
-    @OnClick({R.id.person_read_set, R.id.person_setBankCard, R.id.person_updateVersion, R.id.person_quitLogin})
+    @OnClick({R.id.person_read_set, R.id.person_MyBankCard, R.id.person_updateVersion, R.id.person_quitLogin})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.person_read_set:
+                intent.setClass(this,Activity_ReadSet.class);
+                startActivity(intent);
                 break;
-            case R.id.person_setBankCard:
+            case R.id.person_MyBankCard:
+                intent.setClass(this,Activity_Setting_MyBankCard.class);
+                startActivity(intent);
                 break;
             case R.id.person_updateVersion:
 

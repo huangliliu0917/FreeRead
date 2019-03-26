@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activitys.Activity_Setting_MyBankCard">
+
+
+    <com.hjq.bar.TitleBar
+        android:id="@+id/setting_myBankCard_titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.hjq.bar.TitleBar>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/setting_myBankCard_cardInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+    </android.support.v7.widget.RecyclerView>
+
+
+    <LinearLayout
+        android:id="@+id/setting_myBankCard_toubao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/space15"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:src="@mipmap/icon_biaoqing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/space5"/>
+
+        <TextView
+            android:text="点击投保“银行卡安全险”，用卡更安全"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

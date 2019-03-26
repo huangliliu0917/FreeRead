@@ -41,26 +41,41 @@
 
             <RadioButton
                 android:id="@+id/askQuestion_askWrong"
-                android:button="@null"
                 android:text="问题反馈"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_width="0dp"
+                android:layout_height="@dimen/space35"
+                android:layout_weight="1"
+                android:background="@drawable/btn_select1"
+                android:button="@null"
+                android:gravity="center"
+                android:textColor="@color/radiobutton_textcolor"
+                android:textSize="@dimen/font14"/>
 
             <RadioButton
                 android:id="@+id/askQuestion_askSuggest"
-                android:button="@null"
                 android:text="功能建议"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/space30"
-                android:layout_marginRight="@dimen/space30"/>
+                android:layout_width="0dp"
+                android:layout_height="@dimen/space35"
+                android:layout_weight="1"
+                android:background="@drawable/btn_select1"
+                android:button="@null"
+                android:gravity="center"
+                android:textColor="@color/radiobutton_textcolor"
+                android:textSize="@dimen/font14"
+                android:layout_marginRight="@dimen/space15"
+                android:layout_marginLeft="@dimen/space15"/>
 
             <RadioButton
                 android:id="@+id/askQuestion_askOther"
-                android:button="@null"
                 android:text="其他"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="0dp"
+                android:layout_height="@dimen/space35"
+                android:layout_weight="1"
+                android:background="@drawable/btn_select1"
+                android:button="@null"
+                android:gravity="center"
+                android:textColor="@color/radiobutton_textcolor"
+                android:textSize="@dimen/font14" />
 
         </RadioGroup>
 

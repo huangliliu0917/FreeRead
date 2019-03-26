@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray2">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space15"/>
+
+            <!--搜狐资讯-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorWhite">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/space15"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/space3"
+                        android:layout_height="wrap_content"
+                        android:background="@color/textSelect"
+                        android:layout_marginRight="@dimen/space5"/>
+
+
+                    <TextView
+                        android:text="搜狐资讯"
+                        android:textColor="@color/textSelect"
+                        android:textSize="@dimen/font14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space1"
+                    android:background="@color/colorGray2"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/space15"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:text="每篇滑动多少次后自动返回："
+                                android:textColor="@color/colorGray"
+                                android:textSize="@dimen/font14"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"/>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:id="@+id/setFunction_souhu_back"
+                                android:hint="20"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/shape_border1"
+                                android:paddingLeft="@dimen/space25"
+                                android:paddingRight="@dimen/space25"
+                                android:paddingBottom="@dimen/space5"
+                                android:paddingTop="@dimen/space5"
+                                android:maxLines="1"
+                                android:maxLength="2"
+                                android:inputType="number"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/space15"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:text="滑动多少次后刷新文章："
+                                android:textColor="@color/colorGray"
+                                android:textSize="@dimen/font14"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"/>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:id="@+id/setFunction_souhu_fresh"
+                                android:hint="20"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/shape_border1"
+                                android:paddingRight="@dimen/space25"
+                                android:paddingLeft="@dimen/space25"
+                                android:paddingTop="@dimen/space5"
+                                android:paddingBottom="@dimen/space5"
+                                android:maxLines="1"
+                                android:maxLength="2"
+                                android:inputType="number"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <!--搜狐资讯-->
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space15"/>
+
+            <!--淘新闻-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorWhite">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/space15"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/space3"
+                        android:layout_height="wrap_content"
+                        android:background="@color/textSelect"
+                        android:layout_marginRight="@dimen/space5"/>
+
+
+                    <TextView
+                        android:text="淘新闻"
+                        android:textColor="@color/textSelect"
+                        android:textSize="@dimen/font14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space1"
+                    android:background="@color/colorGray2"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/space15"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:text="每篇滑动多少次后自动返回："
+                                android:textColor="@color/colorGray"
+                                android:textSize="@dimen/font14"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"/>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:id="@+id/setFunction_taoNews_back"
+                                android:hint="20"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/shape_border1"
+                                android:paddingLeft="@dimen/space25"
+                                android:paddingRight="@dimen/space25"
+                                android:paddingBottom="@dimen/space5"
+                                android:paddingTop="@dimen/space5"
+                                android:maxLines="1"
+                                android:maxLength="2"
+                                android:inputType="number"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/space15"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:text="滑动多少次后刷新文章："
+                                android:textColor="@color/colorGray"
+                                android:textSize="@dimen/font14"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"/>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:id="@+id/setFunction_taoNews_fresh"
+                                android:hint="20"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/shape_border1"
+                                android:paddingRight="@dimen/space25"
+                                android:paddingLeft="@dimen/space25"
+                                android:paddingTop="@dimen/space5"
+                                android:paddingBottom="@dimen/space5"
+                                android:maxLines="1"
+                                android:maxLength="2"
+                                android:inputType="number" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+            <!--淘新闻-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space15"/>
+
+            <!--趣头条-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorWhite">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/space15"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/space3"
+                        android:layout_height="wrap_content"
+                        android:background="@color/textSelect"
+                        android:layout_marginRight="@dimen/space5"/>
+
+
+                    <TextView
+                        android:text="趣头条"
+                        android:textColor="@color/textSelect"
+                        android:textSize="@dimen/font14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space1"
+                    android:background="@color/colorGray2"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/space15"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:text="每篇滑动多少次后自动返回："
+                                android:textColor="@color/colorGray"
+                                android:textSize="@dimen/font14"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"/>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:id="@+id/setFunction_quTitle_back"
+                                android:hint="20"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/shape_border1"
+                                android:paddingLeft="@dimen/space25"
+                                android:paddingRight="@dimen/space25"
+                                android:paddingBottom="@dimen/space5"
+                                android:paddingTop="@dimen/space5"
+                                android:maxLines="1"
+                                android:maxLength="2"
+                                android:inputType="number"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/space15"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:text="滑动多少次后刷新文章："
+                                android:textColor="@color/colorGray"
+                                android:textSize="@dimen/font14"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"/>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:id="@+id/setFunction_quTitle_fresh"
+                                android:hint="20"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/shape_border1"
+                                android:paddingRight="@dimen/space25"
+                                android:paddingLeft="@dimen/space25"
+                                android:paddingTop="@dimen/space5"
+                                android:paddingBottom="@dimen/space5"
+                                android:maxLines="1"
+                                android:maxLength="2"
+                                android:inputType="number"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <!--趣头条-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space15"/>
+
+            <!--自动赚钱开关-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorWhite">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/space15"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+
+                    <TextView
+                        android:text="自动赚钱："
+                        android:textColor="@color/colorGray"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+
+                    <com.kyleduo.switchbutton.SwitchButton
+                        android:id="@+id/readset_setfunction_isOpen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/space15"
+                        app:kswTintColor="@color/textSelect"/>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+            <!--自动赚钱开关-->
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

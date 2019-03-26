@@ -34,7 +34,10 @@
         <activity android:name=".Activitys.Activity_NormalQuestion" />
         <activity android:name=".Activitys.Activity_AskQuestion" />
         <activity android:name=".Activitys.Activity_AboutUs" />
-        <activity android:name=".Activitys.Activity_TiXian"></activity>
+        <activity android:name=".Activitys.Activity_TiXian" />
+        <activity android:name=".Activitys.Activity_Setting_BindBankCard" />
+        <activity android:name=".Activitys.Activity_Setting_MyBankCard" />
+        <activity android:name=".Activitys.Activity_ReadSet"></activity>
     </application>
 
 </manifest>

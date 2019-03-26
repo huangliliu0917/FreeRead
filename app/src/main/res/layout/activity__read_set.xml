@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activitys.Activity_ReadSet">
+
+    <com.hjq.bar.TitleBar
+        android:id="@+id/readSet_titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.hjq.bar.TitleBar>
+
+
+    <LinearLayout android:orientation="vertical"
+        android:id="@+id/readSet_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/readSet_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space40"
+            app:tabIndicatorColor="@color/textSelect"
+            app:tabSelectedTextColor="@color/textSelect"
+            app:tabTextColor="@color/colorGray">
+
+        </android.support.design.widget.TabLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space0.5"
+            android:background="@color/colorGray1"/>
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/readSet_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v4.view.ViewPager>
+
+    </LinearLayout>
+
+</LinearLayout>

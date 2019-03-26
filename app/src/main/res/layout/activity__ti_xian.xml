@@ -1,18 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tixian_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".Activitys.Activity_TiXian">
 
-
-    <com.hjq.bar.TitleBar
-        android:id="@+id/TiXian_titleBar"
+    <LinearLayout
+        android:id="@+id/tixian_one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </com.hjq.bar.TitleBar>
+        <com.hjq.bar.TitleBar
+            android:id="@+id/TiXian_titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</LinearLayout>
+        </com.hjq.bar.TitleBar>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/tixian_one">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/space15">
+
+            <TextView
+                android:text="可提现金额：￥"
+                android:textSize="@dimen/font16"
+                android:textColor="@color/colorGray1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"/>
+
+
+            <TextView
+                android:id="@+id/tixian_CanTiXianNum"
+                android:text="368.55"
+                android:textColor="@color/colorGray"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"/>
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space1"
+            android:background="@color/colorGray2"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space15">
+
+
+            <TextView
+                android:text="提现金额"
+                android:textSize="@dimen/font16"
+                android:textColor="@color/colorGray"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+
+            <EditText
+                android:id="@+id/tixian_WantTiXianNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space15"
+                android:background="@drawable/shape_button"
+                android:maxLength="10"
+                android:maxLines="1"
+                android:inputType="numberDecimal"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space1"
+            android:background="@color/colorGray2"/>
+
+        <LinearLayout
+            android:id="@+id/tixian_selectBank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space15">
+
+
+            <TextView
+                android:text="提现到银行卡"
+                android:textSize="@dimen/font16"
+                android:textColor="@color/colorGray"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"/>
+
+
+            <TextView
+                android:id="@+id/tixian_toBank"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+
+            <ImageView
+                android:src="@mipmap/icon_xiangshang"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"/>
+
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space1"
+            android:background="@color/colorGray2"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/space25">
+
+            <TextView
+                android:id="@+id/tixian_commit"
+                android:text="提交"
+                android:gravity="center"
+                android:textSize="@dimen/font20"
+                android:textColor="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/space20"
+                android:background="@drawable/shape_button2"
+                android:paddingTop="@dimen/space15"
+                android:paddingBottom="@dimen/space15"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

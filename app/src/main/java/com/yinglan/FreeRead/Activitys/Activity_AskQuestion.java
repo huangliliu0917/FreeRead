@@ -69,6 +69,17 @@ public class Activity_AskQuestion extends AppCompatActivity {
             }
         });
 
+
+        askQuestionAskType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+
+                }
+            }
+        });
+
+
     }
 
     @OnClick({R.id.askQuestion_askWrong, R.id.askQuestion_askSuggest, R.id.askQuestion_askOther, R.id.askQuestion_askCommit})
