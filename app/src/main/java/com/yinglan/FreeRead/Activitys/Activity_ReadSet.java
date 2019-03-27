@@ -43,8 +43,6 @@ public class Activity_ReadSet extends AppCompatActivity {
         ButterKnife.bind(this);
 
         initView();
-
-
         initTitles();
         initFragments();
 

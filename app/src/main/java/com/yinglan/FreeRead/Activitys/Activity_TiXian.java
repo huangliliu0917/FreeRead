@@ -1,5 +1,7 @@
 package com.yinglan.FreeRead.Activitys;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -46,18 +49,23 @@ public class Activity_TiXian extends AppCompatActivity implements View.OnClickLi
     @BindView(R.id.tixian_main)
     RelativeLayout tixianMain;
 
+    private Context context;
+    private Intent intent;
 
     private PopupWindow popCard;
     private Adapter_selectBankCard adapter;
     private View view;
     private List<CardBean> cardBeans;
-    private int tag = 5;
+    private CardBean cardBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__ti_xian);
         ButterKnife.bind(this);
+
+        context = getApplicationContext();
+
         initView();
 
         initData();
@@ -91,8 +99,7 @@ public class Activity_TiXian extends AppCompatActivity implements View.OnClickLi
 
 
     public void initData() {
-        adapter = new Adapter_selectBankCard(getApplicationContext());
-        adapter.setOnItemClickListener(this);
+        adapter = new Adapter_selectBankCard(getApplicationContext(),this);
 
         cardBeans = new ArrayList<>();
 
@@ -108,12 +115,13 @@ public class Activity_TiXian extends AppCompatActivity implements View.OnClickLi
 
     private void initPopView() {
         view = getLayoutInflater().inflate(R.layout.select_bankcard, null, false);
-        FrameLayout flPop = view.findViewById(R.id.fl_pop);
         RecyclerView rlvPop = view.findViewById(R.id.rlv_pop);
-
+        ImageView fl_pop_close = view.findViewById(R.id.fl_pop_close);
+        TextView fl_pop_useNewCard = view.findViewById(R.id.fl_pop_useNewCard);
         rlvPop.setLayoutManager(new LinearLayoutManager(this));
         rlvPop.setAdapter(adapter);
-        flPop.setOnClickListener(this);
+        fl_pop_close.setOnClickListener(this);
+        fl_pop_useNewCard.setOnClickListener(this);
     }
 
     private void showPop() {
@@ -122,9 +130,9 @@ public class Activity_TiXian extends AppCompatActivity implements View.OnClickLi
         }
         popCard.setBackgroundDrawable(new ColorDrawable());
         popCard.showAtLocation(tixianMain, Gravity.CENTER, 0, 0);
+        popCard.setOutsideTouchable(false);
         adapter.setData(cardBeans);
         adapter.notifyDataSetChanged();
-        adapter.setOnItemClickListener(this);
     }
 
 
@@ -135,6 +143,13 @@ public class Activity_TiXian extends AppCompatActivity implements View.OnClickLi
                 showPop();
                 break;
             case R.id.tixian_commit:
+
+                if (tixianWantTiXianNum.getText().length() != 0 && cardBean != null){
+                    Toast.makeText(context,"提现已发起",Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(context,"请填写正确信息",Toast.LENGTH_SHORT).show();
+                }
+
                 break;
         }
     }
@@ -142,8 +157,13 @@ public class Activity_TiXian extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.fl_pop:
+            case R.id.fl_pop_close:
                 popCard.dismiss();
+                break;
+            case R.id.fl_pop_useNewCard:
+                popCard.dismiss();
+                intent = new Intent(context,Activity_Setting_BindBankCard.class);
+                startActivity(intent);
                 break;
         }
     }
@@ -158,8 +178,12 @@ public class Activity_TiXian extends AppCompatActivity implements View.OnClickLi
     }
 
     @Override
-    public void onSelectClick(View view, int pos) {
-        Toast.makeText(this, "选择第 " + (pos + 1) + " 条数据成功", Toast.LENGTH_LONG).show();
+    public void onSelectClick(CardBean card, int pos) {
+
+        cardBean = card;
+
+        tixianToBank.setText(card.getCardName()+"("+card.getCardId().substring(card.getCardId().length()-4,card.getCardId().length())+")");
+
         popCard.dismiss();
     }
 

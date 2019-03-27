@@ -16,34 +16,47 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:padding="@dimen/space5">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:id="@+id/fl_pop_close"
+                    android:src="@drawable/ic_close_black_24dp"
+                    android:adjustViewBounds="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="选择到账银行卡"
+                    android:textColor="@color/colorGray"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:layout_centerInParent="true"/>
+
+
+
+            </RelativeLayout>
+
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:text="选择到账银行卡"
-                android:textColor="@color/colorGray"
-                android:textSize="16sp"
-                android:layout_marginLeft="20dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:text="请留意各银行到账时间"
                 android:textColor="@color/colorGray1"
-                android:textSize="12sp"
-                android:layout_marginLeft="20dp" />
+                android:textSize="12sp"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="10dp"
-                android:background="#0C889B" />
         </LinearLayout>
 
         <View
@@ -55,7 +68,31 @@
             android:id="@+id/rlv_pop"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:background="@color/colorWhite" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space0.5"
+            android:background="@color/colorGray2"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="@dimen/space10">
+
+            <TextView
+                android:id="@+id/fl_pop_useNewCard"
+                android:text="使用新卡提现"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 </FrameLayout>

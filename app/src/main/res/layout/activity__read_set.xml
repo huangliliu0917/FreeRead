@@ -15,7 +15,8 @@
     </com.hjq.bar.TitleBar>
 
 
-    <LinearLayout android:orientation="vertical"
+    <LinearLayout
+        android:orientation="vertical"
         android:id="@+id/readSet_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

@@ -7,4 +7,38 @@
     android:orientation="vertical"
     tools:context=".Activitys.Activity_Login">
 
+
+    <com.hjq.bar.TitleBar
+        android:id="@+id/login_titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.hjq.bar.TitleBar>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/login_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/login_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space40"
+            app:tabIndicatorColor="@color/textSelect"
+            app:tabSelectedTextColor="@color/textSelect"
+            app:tabTextColor="@color/colorGray">
+
+        </android.support.design.widget.TabLayout>
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/login_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v4.view.ViewPager>
+
+    </LinearLayout>
+
 </LinearLayout>

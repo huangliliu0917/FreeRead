@@ -37,7 +37,9 @@
         <activity android:name=".Activitys.Activity_TiXian" />
         <activity android:name=".Activitys.Activity_Setting_BindBankCard" />
         <activity android:name=".Activitys.Activity_Setting_MyBankCard" />
-        <activity android:name=".Activitys.Activity_ReadSet"></activity>
+        <activity android:name=".Activitys.Activity_ReadSet" />
+        <activity android:name=".Activitys.Activity_UserAgreement" />
+        <activity android:name=".Activitys.Activity_FindPassword"></activity>
     </application>
 
 </manifest>

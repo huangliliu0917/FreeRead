@@ -64,7 +64,7 @@ public class SplashActivity extends AppCompatActivity {
     private void requestAds(){
 
         Toast.makeText(this,"广告加载成功",Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this,Activity_Login.class);
         startActivity(intent);
         finish();
 
@@ -81,7 +81,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         if (canJump){
-            Intent intent = new Intent(this,MainActivity.class);
+            Intent intent = new Intent(this,Activity_Login.class);
             startActivity(intent);
             finish();
         }else{

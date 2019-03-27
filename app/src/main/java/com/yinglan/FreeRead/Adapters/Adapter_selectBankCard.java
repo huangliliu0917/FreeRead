@@ -38,8 +38,9 @@ public class Adapter_selectBankCard extends RecyclerView.Adapter<Adapter_selectB
 
 
     @SuppressLint("UseSparseArrays")
-    public Adapter_selectBankCard(Context mContext) {
+    public Adapter_selectBankCard(Context mContext,OnItemClickListener mOnItemClickListener) {
         this.mContext = mContext;
+        this.mOnItemClickListener = mOnItemClickListener;
         map = new HashMap<>();
         cards = new ArrayList<>();
     }
@@ -64,12 +65,19 @@ public class Adapter_selectBankCard extends RecyclerView.Adapter<Adapter_selectB
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder myViewHolder, final int i) {
-        CardBean card = cards.get(i);
+        final CardBean card = cards.get(i);
 
         Glide.with(mContext).load(mContext.getResources().getDrawable(R.mipmap.icon_zhaoshangyinhang)).into(myViewHolder.bankCard_icon);
         myViewHolder.bankCard_Name.setText(card.getCardName());
         myViewHolder.bankCard_type.setText(card.getCardType());
         myViewHolder.bankCard_id.setText(card.getCardId());
+
+        myViewHolder.bankCard_one.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnItemClickListener.onSelectClick(card,i);
+            }
+        });
 
     }
 
@@ -110,10 +118,6 @@ public class Adapter_selectBankCard extends RecyclerView.Adapter<Adapter_selectB
 
     public interface OnItemClickListener {
 
-        void onSelectClick(View view, int pos);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        mOnItemClickListener = onItemClickListener;
+        void onSelectClick(CardBean card, int pos);
     }
 }
