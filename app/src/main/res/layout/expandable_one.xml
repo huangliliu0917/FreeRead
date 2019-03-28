@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGray2"
+        android:padding="@dimen/space15">
+        <TextView
+            android:id="@+id/tv_group"
+            android:textSize="@dimen/font16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="一级标题"/>
+    </RelativeLayout>
+
+</LinearLayout>

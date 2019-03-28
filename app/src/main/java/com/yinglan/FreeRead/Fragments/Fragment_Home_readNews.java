@@ -82,9 +82,11 @@ public class Fragment_Home_readNews extends Fragment {
 //        mFragmentList.add(TextFragment.newInstance("体育"));
 //        mFragmentList.add(TextFragment.newInstance("视频"));
 
-        for (int i = 0 ; i < mTitleList.size() ; i++){
-            mFragmentList.add(new Fragment_Home_news());
-        }
+        mFragmentList.add(new Fragment_Home_news());
+        mFragmentList.add(new Fragment_Home_news());
+        mFragmentList.add(new Fragment_Home_news());
+        mFragmentList.add(new Fragment_Home_news());
+        mFragmentList.add(new Fragment_Home_videos());
     }
 
 

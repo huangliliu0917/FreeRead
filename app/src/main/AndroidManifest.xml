@@ -27,7 +27,6 @@
         </activity>
         <activity android:name=".Activitys.Activity_Register" />
         <activity android:name=".Activitys.Activity_Login" />
-        <activity android:name=".BaseActivity" />
         <activity android:name=".Activitys.Activity_Setting" />
         <activity android:name=".Activitys.Activity_OnlineHelper" />
         <activity android:name=".Activitys.Activity_News" />
@@ -39,7 +38,13 @@
         <activity android:name=".Activitys.Activity_Setting_MyBankCard" />
         <activity android:name=".Activitys.Activity_ReadSet" />
         <activity android:name=".Activitys.Activity_UserAgreement" />
-        <activity android:name=".Activitys.Activity_FindPassword"></activity>
+        <activity android:name=".Activitys.Activity_FindPassword" />
+        <activity android:name=".Activitys.Activity_TaskInfo" />
+        <activity android:name=".Activitys.Activity_Task" />
+        <activity android:name=".Activitys.Activity_QianDao" />
+        <activity android:name=".Activitys.Activity_TaskRecord">
+
+        </activity>
     </application>
 
 </manifest>

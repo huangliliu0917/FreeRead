@@ -44,7 +44,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:background="@drawable/shape_button"/>
+                            android:background="@drawable/shape_button"
+                            android:visibility="invisible"/>
 
 
                     </RelativeLayout>
@@ -287,7 +288,7 @@
                     <RadioButton
                         android:id="@+id/btn_home_lingjiangli"
                         android:button="@null"
-                        android:text="领奖励"
+                        android:text="领任务"
                         android:textColor="@color/colorGray"
                         android:drawableTop="@mipmap/icon_linjiangli"
                         android:layout_width="match_parent"
@@ -345,18 +346,6 @@
 
 
                     <RadioButton
-                        android:id="@+id/btn_home_qianghongbao"
-                        android:button="@null"
-                        android:text="抢红包"
-                        android:textColor="@color/colorGray"
-                        android:drawableTop="@mipmap/icon_qiaohongbao"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:drawablePadding="@dimen/space5"/>
-
-                    <RadioButton
                         android:id="@+id/btn_home_kuaisutixian"
                         android:button="@null"
                         android:text="快速提现"
@@ -371,7 +360,7 @@
                     <RadioButton
                         android:id="@+id/btn_home_jinrushangcheng"
                         android:button="@null"
-                        android:text="进入商城"
+                        android:text="商城"
                         android:textColor="@color/colorGray"
                         android:drawableTop="@mipmap/icon_jinrushangcheng"
                         android:layout_width="match_parent"
@@ -379,6 +368,21 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:drawablePadding="@dimen/space5"/>
+
+
+
+                    <RadioButton
+                        android:id="@+id/btn_home_qianghongbao"
+                        android:button="@null"
+                        android:text="抢红包"
+                        android:textColor="@color/colorGray"
+                        android:drawableTop="@mipmap/icon_qiaohongbao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:drawablePadding="@dimen/space5"
+                        android:visibility="invisible"/>
 
                 </LinearLayout>
 

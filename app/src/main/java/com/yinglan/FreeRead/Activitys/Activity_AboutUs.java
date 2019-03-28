@@ -6,7 +6,17 @@ import android.view.View;
 
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
+import com.tsy.sdk.myokhttp.MyOkHttp;
+import com.tsy.sdk.myokhttp.response.IResponseHandler;
+import com.tsy.sdk.myokhttp.response.JsonResponseHandler;
+import com.yinglan.FreeRead.Constant.HttpConstant;
 import com.yinglan.FreeRead.R;
+import com.yinglan.FreeRead.Utils.LogUtils;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,6 +32,9 @@ public class Activity_AboutUs extends AppCompatActivity {
         setContentView(R.layout.activity__about_us);
         ButterKnife.bind(this);
         initView();
+
+        initNet();
+
     }
 
 
@@ -47,5 +60,23 @@ public class Activity_AboutUs extends AppCompatActivity {
             }
         });
     }
+
+
+    public void initNet(){
+        Map<String, String> params = new HashMap<String, String>();
+
+        MyOkHttp.get().post(HttpConstant.URL, params, new JsonResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, JSONObject response) {
+                LogUtils.d("网络请求状态码：------》成功"+statusCode);
+            }
+
+            @Override
+            public void onFailure(int statusCode, String error_msg) {
+                LogUtils.d("网络请求状态码：------》失败"+statusCode+","+error_msg);
+            }
+        });
+    }
+
 
 }

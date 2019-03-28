@@ -11,6 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.yinglan.FreeRead.Activitys.Activity_Home_NewsInfo;
+import com.yinglan.FreeRead.Activitys.Activity_QianDao;
+import com.yinglan.FreeRead.Activitys.Activity_Task;
+import com.yinglan.FreeRead.Activitys.Activity_TaskInfo;
+import com.yinglan.FreeRead.Activitys.Activity_TiXian;
 import com.yinglan.FreeRead.R;
 
 import butterknife.BindView;
@@ -54,6 +58,7 @@ public class Fragment_Home_makeMoney extends Fragment {
 
     private View view;
     private Unbinder unbinder;
+    private Intent intent;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -70,7 +75,7 @@ public class Fragment_Home_makeMoney extends Fragment {
             case R.id.btn_home_makeMoney_tixian:
 //                Toast.makeText(getActivity(),"提现",Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent();
+                intent = new Intent();
                 intent.setClass(getContext(),Activity_Home_NewsInfo.class);
                 startActivity(intent);
 
@@ -79,10 +84,16 @@ public class Fragment_Home_makeMoney extends Fragment {
                 Toast.makeText(getContext(),"开始赚钱",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_home_qiandao:
-                Toast.makeText(getContext(),"签到",Toast.LENGTH_SHORT).show();
+                intent = new Intent();
+                intent.setClass(getContext(),Activity_QianDao.class);
+                startActivity(intent);
+//                Toast.makeText(getContext(),"签到",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_home_lingjiangli:
-                Toast.makeText(getContext(),"领奖励",Toast.LENGTH_SHORT).show();
+                intent = new Intent();
+                intent.setClass(getContext(),Activity_Task.class);
+                startActivity(intent);
+//                Toast.makeText(getContext(),"领任务",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_home_yueduzhuanqian:
                 Toast.makeText(getContext(),"阅读赚钱",Toast.LENGTH_SHORT).show();
@@ -97,10 +108,13 @@ public class Fragment_Home_makeMoney extends Fragment {
                 Toast.makeText(getContext(),"抢红包",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_home_kuaisutixian:
-                Toast.makeText(getContext(),"快速提现",Toast.LENGTH_SHORT).show();
+                intent = new Intent();
+                intent.setClass(getContext(),Activity_TiXian.class);
+                startActivity(intent);
+//                Toast.makeText(getContext(),"快速提现",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_home_jinrushangcheng:
-                Toast.makeText(getContext(),"进入商城",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),"商城",Toast.LENGTH_SHORT).show();
                 break;
         }
     }

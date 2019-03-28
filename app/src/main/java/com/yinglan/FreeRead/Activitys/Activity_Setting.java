@@ -3,13 +3,17 @@ package com.yinglan.FreeRead.Activitys;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.flyco.animation.BaseAnimatorSet;
+import com.flyco.animation.BounceEnter.BounceTopEnter;
+import com.flyco.animation.SlideExit.SlideBottomExit;
 import com.flyco.dialog.listener.OnBtnClickL;
 import com.flyco.dialog.widget.MaterialDialog;
 import com.flyco.dialog.widget.NormalDialog;
@@ -37,7 +41,8 @@ public class Activity_Setting extends AppCompatActivity {
     LinearLayout personQuitLogin;
 
 
-    private MaterialDialog normalDialog;
+    private MaterialDialog materialDialog;
+    private NormalDialog normalDialog;
     private BaseAnimatorSet nBasIn,mBasOut;
     private Intent intent;
 
@@ -75,6 +80,10 @@ public class Activity_Setting extends AppCompatActivity {
 
             }
         });
+
+
+        nBasIn = new BounceTopEnter();
+        mBasOut = new SlideBottomExit();
     }
 
     @OnClick({R.id.person_read_set, R.id.person_MyBankCard, R.id.person_updateVersion, R.id.person_quitLogin})
@@ -90,21 +99,51 @@ public class Activity_Setting extends AppCompatActivity {
                 break;
             case R.id.person_updateVersion:
 
-                normalDialog = new MaterialDialog(this);
-                normalDialog.content("已是最新版本！")
+                materialDialog = new MaterialDialog(this);
+                materialDialog.content("已是最新版本！")
                         .btnNum(1)
                         .btnText("确定")
                         .title("提示")
                         .show();
-                normalDialog.setOnBtnClickL(new OnBtnClickL() {
+                materialDialog.setOnBtnClickL(new OnBtnClickL() {
                     @Override
                     public void onBtnClick() {
-                        normalDialog.dismiss();
+                        materialDialog.dismiss();
                     }
                 });
 
                 break;
             case R.id.person_quitLogin:
+
+                normalDialog = new NormalDialog(this);
+                normalDialog.isTitleShow(false)//
+                        .bgColor(Color.parseColor("#ffffff"))//
+                        .cornerRadius(5)//
+                        .content("是否确定退出程序?")//
+                        .contentGravity(Gravity.CENTER)//
+                        .contentTextColor(Color.parseColor("#454545"))//
+                        .dividerColor(Color.parseColor("#222222"))//
+                        .btnTextSize(15.5f, 15.5f)//
+                        .btnTextColor(Color.parseColor("#3b9cf2"), Color.parseColor("#3b9cf2"))//
+                        .widthScale(0.85f)//
+                        .showAnim(nBasIn)//
+                        .dismissAnim(mBasOut)//
+                        .show();
+
+                normalDialog.setOnBtnClickL(
+                        new OnBtnClickL() {
+                            @Override
+                            public void onBtnClick() {
+                                normalDialog.dismiss();
+                            }
+                        },
+                        new OnBtnClickL() {
+                            @Override
+                            public void onBtnClick() {
+                                normalDialog.dismiss();
+                            }
+                        });
+
                 break;
         }
     }
