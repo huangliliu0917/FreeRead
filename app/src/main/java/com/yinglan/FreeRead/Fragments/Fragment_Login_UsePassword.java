@@ -15,17 +15,28 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.flyco.animation.BaseAnimatorSet;
 import com.flyco.animation.BounceEnter.BounceTopEnter;
 import com.flyco.animation.SlideExit.SlideBottomExit;
 import com.flyco.dialog.listener.OnBtnClickL;
 import com.flyco.dialog.widget.NormalDialog;
+import com.tsy.sdk.myokhttp.MyOkHttp;
+import com.tsy.sdk.myokhttp.response.JsonResponseHandler;
 import com.yinglan.FreeRead.Activitys.Activity_FindPassword;
 import com.yinglan.FreeRead.Activitys.Activity_Register;
 import com.yinglan.FreeRead.Activitys.Activity_UserAgreement;
 import com.yinglan.FreeRead.Activitys.MainActivity;
+import com.yinglan.FreeRead.Constant.HttpConstant;
 import com.yinglan.FreeRead.R;
+import com.yinglan.FreeRead.Utils.StringUtils;
+import com.yinglan.FreeRead.wxapi.WXUtils;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,10 +50,6 @@ import butterknife.Unbinder;
 public class Fragment_Login_UsePassword extends Fragment {
 
 
-    @BindView(R.id.login_usepassword_phoneNumber)
-    EditText loginUsepasswordPhoneNumber;
-    @BindView(R.id.login_usepassword_getCheckNum)
-    EditText loginUsepasswordGetCheckNum;
     @BindView(R.id.select_login_usepassword_ZiDong)
     CheckBox selectLoginUsepasswordZiDong;
     @BindView(R.id.btn_login_usepassword_forgetPassword)
@@ -58,11 +65,15 @@ public class Fragment_Login_UsePassword extends Fragment {
     @BindView(R.id.btn_login_usepassword_userAgreement)
     TextView btnLoginUsepasswordUserAgreement;
     Unbinder unbinder;
+    @BindView(R.id.login_phoneNumber)
+    EditText loginPhoneNumber;
+    @BindView(R.id.login_usepassword)
+    EditText loginUsepassword;
     private View view;
     private Context context;
     private Intent intent;
     private NormalDialog normalDialog;
-    private BaseAnimatorSet nBasIn,mBasOut;
+    private BaseAnimatorSet nBasIn, mBasOut;
 
 
     @Nullable
@@ -89,12 +100,34 @@ public class Fragment_Login_UsePassword extends Fragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_login_usepassword_forgetPassword:
-                intent = new Intent(context,Activity_FindPassword.class);
+                intent = new Intent(context, Activity_FindPassword.class);
                 startActivity(intent);
                 break;
             case R.id.btn_login_usepassword:
-                intent = new Intent(context,MainActivity.class);
-                startActivity(intent);
+
+                String userName = loginPhoneNumber.getText().toString();
+                String userPassword = loginUsepassword.getText().toString();
+
+                if (StringUtils.isEmpty(userName) || StringUtils.isEmpty(userPassword)){
+                    Toast.makeText(context,"请填写用户信息",Toast.LENGTH_SHORT).show();
+                }else{
+                    //判断手机号
+                    if(!StringUtils.isMobile(userName)){
+                        Toast.makeText(context,"手机号错误",Toast.LENGTH_SHORT).show();
+                    }else{
+
+                        if (loginWithPassword(userName,userPassword)){
+                            intent = new Intent(context,MainActivity.class);
+                            startActivity(intent);
+                            getActivity().finish();
+                        }else{
+                            Toast.makeText(context,"用户信息错误",Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                }
+
+
                 break;
             case R.id.btn_login_usepassword_fromWeChat:
                 normalDialog = new NormalDialog(getContext());
@@ -122,7 +155,7 @@ public class Fragment_Login_UsePassword extends Fragment {
                         new OnBtnClickL() {
                             @Override
                             public void onBtnClick() {
-                                normalDialog.dismiss();
+                                WXUtils.wxLogin(context);
                             }
                         });
 
@@ -160,13 +193,41 @@ public class Fragment_Login_UsePassword extends Fragment {
 
                 break;
             case R.id.btn_login_usepassword_register:
-                intent = new Intent(context,Activity_Register.class);
+                intent = new Intent(context, Activity_Register.class);
                 startActivity(intent);
                 break;
             case R.id.btn_login_usepassword_userAgreement:
-                intent = new Intent(context,Activity_UserAgreement.class);
+                intent = new Intent(context, Activity_UserAgreement.class);
                 startActivity(intent);
                 break;
         }
     }
+
+
+    /**
+     * @param userName 用户名
+     * @param userPassword 密码
+     * @return
+     */
+    public boolean loginWithPassword(String userName, String userPassword) {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("userName", userName);
+        params.put("userPassword", userPassword);
+
+        MyOkHttp.get().post(context, HttpConstant.login_with_password, params, new JsonResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, JSONObject response) {
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, String error_msg) {
+
+            }
+        });
+
+        return true;
+    }
+
+
 }

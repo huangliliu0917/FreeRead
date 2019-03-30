@@ -20,12 +20,16 @@ import cn.jzvd.JZVideoPlayer;
  * Created by ${AUTHOR} on 2019/3/28 0028
  * Function: ${Function}
  */
-public class Fragment_Home_videos extends Fragment {
+public class Fragment_Home_videos extends BaseFragment {
 
     @BindView(R.id.home_videos_recycler)
     RecyclerView homeVideosRecycler;
     Unbinder unbinder;
     private View view;
+
+    /*懒加载处理*/
+    private boolean mHasLoadedOnce = false;
+    private boolean isPrepared = false;
 
 
 
@@ -33,11 +37,12 @@ public class Fragment_Home_videos extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fargment_home_videos, null);
-
-        initView();
-
         unbinder = ButterKnife.bind(this, view);
 
+        isPrepared = true;
+        lazyLoad();
+
+        initView();
         initData();
 
         return view;
@@ -61,5 +66,22 @@ homeVideosRecycler.setLayoutManager(linearLayoutManager);
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        mHasLoadedOnce = false;
+        isPrepared = false;
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        JZVideoPlayer.releaseAllVideos();
+    }
+
+
+    @Override
+    protected void lazyLoad() {
+        if (mHasLoadedOnce || !isPrepared)
+            return;
+        mHasLoadedOnce = true;
+    }
+
 }

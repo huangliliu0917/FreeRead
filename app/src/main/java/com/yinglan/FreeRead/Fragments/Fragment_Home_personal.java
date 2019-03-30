@@ -27,7 +27,7 @@ import butterknife.Unbinder;
  * Created by ${AUTHOR} on 2019/3/23 0023
  * Function: ${Function}
  */
-public class Fragment_Home_personal extends Fragment {
+public class Fragment_Home_personal extends BaseFragment {
 
     public static final String BUNDLE_TITLE = "title";
     @BindView(R.id.btn_person_xiaoxi)
@@ -50,12 +50,19 @@ public class Fragment_Home_personal extends Fragment {
     private String mTitle = "DefaultValue";
     private View view;
     private Intent intent;
+    /*懒加载处理*/
+    private boolean mHasLoadedOnce = false;
+    private boolean isPrepared = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home_personal, null);
         unbinder = ButterKnife.bind(this, view);
         intent = new Intent();
+
+        isPrepared = true;
+        lazyLoad();
+
         return view;
     }
 
@@ -67,11 +74,7 @@ public class Fragment_Home_personal extends Fragment {
         return fragment;
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
+
 
     @OnClick({R.id.btn_person_xiaoxi, R.id.btn_person_kefu, R.id.btn_person_setting, R.id.person_inviteMakeMoney, R.id.person_tixian, R.id.person_normalProblem, R.id.person_askQuestion, R.id.person_about})
     public void onViewClicked(View view) {
@@ -107,5 +110,21 @@ public class Fragment_Home_personal extends Fragment {
                 startActivity(intent);
                 break;
         }
+    }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+        mHasLoadedOnce = false;
+        isPrepared = false;
+    }
+
+    @Override
+    protected void lazyLoad() {
+        if (mHasLoadedOnce || !isPrepared)
+            return;
+        mHasLoadedOnce = true;
     }
 }

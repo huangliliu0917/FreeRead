@@ -14,5 +14,8 @@
     <color name="colorGray4">#bbbbbb</color>
 
     <color name="colorBlue">#3491e2</color>
+    <color name="colorBlue1">#097ee5</color>
     <color name="colorRed">#EF2121</color>
+    <color name="colorYellow">#f6ad07</color>
+    <color name="colorYellow1">#7b5e0a</color>
 </resources>

@@ -48,6 +48,8 @@ public class Activity_Login extends AppCompatActivity {
         ButterKnife.bind(this);
         intent = new Intent();
         initView();
+
+
         initTitles();
         initFragments();
 
@@ -61,13 +63,12 @@ public class Activity_Login extends AppCompatActivity {
     @SuppressLint("ResourceAsColor")
     public void initView() {
         loginTitleBar.setTitle("登录");
-        loginTitleBar.setLeftIcon(this.getResources().getDrawable(R.mipmap.icon_fanghuijian));
         loginTitleBar.setTitleColor(this.getResources().getColor(R.color.colorWhite));
         loginTitleBar.setBackgroundColor(this.getResources().getColor(R.color.textSelect));
         loginTitleBar.setOnTitleBarListener(new OnTitleBarListener() {
             @Override
             public void onLeftClick(View v) {
-                finish();
+
             }
 
             @Override
@@ -81,7 +82,6 @@ public class Activity_Login extends AppCompatActivity {
             }
         });
     }
-
 
     public void initTitles() {
         mTitleList = new ArrayList<>();

@@ -1,6 +1,7 @@
 package com.yinglan.FreeRead.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.yinglan.FreeRead.Activitys.Activity_Home_NewsInfo;
 import com.yinglan.FreeRead.R;
 
 import java.util.List;
@@ -18,9 +20,10 @@ import java.util.List;
  * Created by Frank on 2019/3/25
  * Introduce : ${Text}
  */
-public class Adapter_Fragment_Read extends RecyclerView.Adapter {
+public class Adapter_Fragment_Read extends RecyclerView.Adapter implements View.OnClickListener {
 
     private Context context;
+    private Intent intent;
 
 
 
@@ -55,7 +58,7 @@ public class Adapter_Fragment_Read extends RecyclerView.Adapter {
 
         TextView news_item2_title,news_item2_author,news_item2_haoping;
         ImageView news_item2_img;
-        LinearLayout news_item1_layout2;
+        LinearLayout news_item2_layout2;
 
         public Read_item_two(@NonNull View itemView) {
             super(itemView);
@@ -64,7 +67,7 @@ public class Adapter_Fragment_Read extends RecyclerView.Adapter {
             news_item2_author = itemView.findViewById(R.id.news_item2_author);
             news_item2_haoping = itemView.findViewById(R.id.news_item2_haoping);
             news_item2_img = itemView.findViewById(R.id.news_item2_img);
-            news_item1_layout2 = itemView.findViewById(R.id.news_item1_layout2);
+            news_item2_layout2 = itemView.findViewById(R.id.news_item2_layout2);
         }
     }
     /*第二种布局*/
@@ -90,6 +93,26 @@ public class Adapter_Fragment_Read extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
 
+        switch (getItemViewType(i)){
+
+            case 1:
+
+                Read_item_one read_item_one = (Read_item_one) viewHolder;
+                read_item_one.news_item1_layout1.setOnClickListener(this);
+
+                break;
+
+
+            case 2:
+
+                Read_item_two read_item_two = (Read_item_two) viewHolder;
+                read_item_two.news_item2_layout2.setOnClickListener(this);
+
+                break;
+
+        }
+
+
     }
 
     @Override
@@ -106,4 +129,25 @@ public class Adapter_Fragment_Read extends RecyclerView.Adapter {
             return 2;
         }
     }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case  R.id.news_item1_layout1:
+                intent = new Intent();
+                intent.setClass(context,Activity_Home_NewsInfo.class);
+                context.startActivity(intent);
+                break;
+
+            case R.id.news_item2_layout2:
+                intent = new Intent();
+                intent.setClass(context,Activity_Home_NewsInfo.class);
+                context.startActivity(intent);
+                break;
+
+        }
+    }
+
+
 }

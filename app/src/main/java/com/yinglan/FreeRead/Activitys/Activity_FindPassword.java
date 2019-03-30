@@ -3,15 +3,27 @@ package com.yinglan.FreeRead.Activitys;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
+import com.tsy.sdk.myokhttp.MyOkHttp;
+import com.tsy.sdk.myokhttp.response.JsonResponseHandler;
+import com.yinglan.FreeRead.Constant.HttpConstant;
 import com.yinglan.FreeRead.R;
+import com.yinglan.FreeRead.Utils.CountDownTimerUtils;
+import com.yinglan.FreeRead.Utils.StringUtils;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,6 +47,7 @@ public class Activity_FindPassword extends AppCompatActivity {
 
     private Context context;
     private Intent intent;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +56,7 @@ public class Activity_FindPassword extends AppCompatActivity {
         ButterKnife.bind(this);
 
         context = getApplicationContext();
+        sharedPreferences = context.getSharedPreferences("UserData",Context.MODE_PRIVATE);
         initView();
 
     }
@@ -77,9 +91,74 @@ public class Activity_FindPassword extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_findPassword_getSecurity:
+
+                String phoneNum = findPasswordPhoneNumber.getText().toString();
+
+                if (StringUtils.isEmpty(phoneNum)){
+                    Toast.makeText(context,"手机号不能为空",Toast.LENGTH_SHORT).show();
+                }else{
+                    if(!StringUtils.isMobile(phoneNum)){
+                        Toast.makeText(context,"手机号错误",Toast.LENGTH_SHORT).show();
+                    }else{
+                        CountDownTimerUtils mCountDownTimerUtils = new CountDownTimerUtils(context,btnFindPasswordGetSecurity, phoneNum, 60000, 1000); //倒计时1分钟
+                        mCountDownTimerUtils.start();
+                    }
+                }
+
                 break;
             case R.id.btn_findPassword_login:
+
+                String phoneNum1 = findPasswordPhoneNumber.getText().toString();
+                String checkNum = findPasswordCheckCode.getText().toString();
+                String password = findPasswordChangePasword.getText().toString();
+
+                if (StringUtils.isEmpty(phoneNum1) || StringUtils.isEmpty(checkNum) || StringUtils.isEmpty(password)){
+                    Toast.makeText(context,"请填写用户信息",Toast.LENGTH_SHORT).show();
+                }else{
+                    //判断手机号
+                    if(!StringUtils.isMobile(phoneNum1)){
+                        Toast.makeText(context,"手机号错误",Toast.LENGTH_SHORT).show();
+                    }else if(StringUtils.isSame(checkNum,sharedPreferences.getString("SMSCode",""))){
+                        Toast.makeText(context,"验证码错误",Toast.LENGTH_SHORT).show();
+                    }else if(updateLoginPassword(phoneNum1,checkNum,password)){
+                        intent = new Intent(context,MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
                 break;
         }
     }
+
+
+    /**
+     * 忘记密码
+     * @param phoneNum1
+     * @param checkNum
+     * @param password
+     * @return
+     */
+    public boolean updateLoginPassword(String phoneNum1, String checkNum, String password){
+
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("phoneNum1", phoneNum1);
+        params.put("checkNum", checkNum);
+        params.put("password", password);
+
+        MyOkHttp.get().post(context, HttpConstant.forgetPassword, params, new JsonResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, JSONObject response) {
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, String error_msg) {
+
+            }
+        });
+
+        return true;
+    }
+
+
 }

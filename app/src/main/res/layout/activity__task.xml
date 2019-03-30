@@ -147,225 +147,254 @@
                     android:id="@+id/task_chaoji"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/space15"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:src="@mipmap/icon_tehuirenwu"
-                        android:adjustViewBounds="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginRight="@dimen/space15"
-                        android:layout_marginLeft="@dimen/space15"
-                        android:orientation="vertical">
+                        android:padding="@dimen/space15"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:src="@mipmap/icon_tehuirenwu"
+                            android:adjustViewBounds="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
 
 
-                        <TextView
-                            android:text="超级特惠任务"
-                            android:textColor="@color/colorGray3"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"/>
+                            android:layout_marginRight="@dimen/space15"
+                            android:layout_marginLeft="@dimen/space15"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:text="超级特惠任务"
+                                android:textColor="@color/colorGray3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"/>
+
+
+                            <TextView
+                                android:id="@+id/task_chaoji_info"
+                                android:text="今天下2笔满20元订单"
+                                android:textSize="@dimen/font12"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/space5"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"/>
+
+
+                            <TextView
+                                android:id="@+id/task_chaoji_jiangli"
+                                android:text="奖励金+4"
+                                android:textColor="@color/colorRed"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/space5"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"/>
+
+
+                        </LinearLayout>
 
 
                         <TextView
-                            android:id="@+id/task_chaoji_info"
-                            android:text="今天下2笔满20元订单"
-                            android:textSize="@dimen/font12"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/space5"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"/>
-
-
-                        <TextView
-                            android:id="@+id/task_chaoji_jiangli"
-                            android:text="奖励金+4"
-                            android:textColor="@color/colorRed"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/space5"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"/>
-
+                            android:id="@+id/task_chaoji_receive"
+                            android:text="领任务"
+                            android:background="@drawable/shape_button5"
+                            android:textColor="@color/colorYellow1"
+                            android:layout_width="@dimen/space80"
+                            android:layout_height="@dimen/space35"
+                            android:gravity="center"/>
 
                     </LinearLayout>
 
 
-                    <TextView
-                        android:id="@+id/task_chaoji_receive"
-                        android:text="领任务"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/space1"
+                        android:background="@color/colorGray2"/>
 
                 </LinearLayout>
 
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/space1"
-                    android:background="@color/colorGray2"/>
 
 
                 <LinearLayout
                     android:id="@+id/task_yexiao"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/space15"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:src="@mipmap/icon_yexiaorenwu"
-                        android:adjustViewBounds="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginRight="@dimen/space15"
-                        android:layout_marginLeft="@dimen/space15"
-                        android:orientation="vertical">
+                        android:padding="@dimen/space15"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:src="@mipmap/icon_yexiaorenwu"
+                            android:adjustViewBounds="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
 
 
-                        <TextView
-                            android:text="夜宵特惠任务"
-                            android:textColor="@color/colorGray3"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"/>
+                            android:layout_marginRight="@dimen/space15"
+                            android:layout_marginLeft="@dimen/space15"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:text="夜宵特惠任务"
+                                android:textColor="@color/colorGray3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"/>
+
+
+                            <TextView
+                                android:id="@+id/task_yexiao_info"
+                                android:text="今天晚餐时段（19:00 24:00）下一笔满20元订单"
+                                android:textSize="@dimen/font12"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineSpacingExtra="@dimen/space5"
+                                android:layout_marginTop="@dimen/space5"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"/>
+
+
+                            <TextView
+                                android:id="@+id/task_yexiao_jiangli"
+                                android:text="奖励金+3"
+                                android:textColor="@color/colorRed"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/space5"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"/>
+
+
+                        </LinearLayout>
 
 
                         <TextView
-                            android:id="@+id/task_yexiao_info"
-                            android:text="今天晚餐时段（19:00 24:00）下一笔满20元订单"
-                            android:textSize="@dimen/font12"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:lineSpacingExtra="@dimen/space5"
-                            android:layout_marginTop="@dimen/space5"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"/>
-
-
-                        <TextView
-                            android:id="@+id/task_yexiao_jiangli"
-                            android:text="奖励金+3"
-                            android:textColor="@color/colorRed"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/space5"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"/>
-
+                            android:id="@+id/task_yexiao_receive"
+                            android:text="领任务"
+                            android:background="@drawable/shape_button5"
+                            android:textColor="@color/colorYellow1"
+                            android:layout_width="@dimen/space80"
+                            android:layout_height="@dimen/space35"
+                            android:gravity="center"/>
 
                     </LinearLayout>
 
-
-                    <TextView
-                        android:id="@+id/task_yexiao_receive"
-                        android:text="领任务"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/space1"
+                        android:background="@color/colorGray2"/>
 
                 </LinearLayout>
 
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/space1"
-                    android:background="@color/colorGray2"/>
 
 
                 <LinearLayout
                     android:id="@+id/task_shenmi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/space15"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:src="@mipmap/icon_shengmirenwu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                    android:orientation="vertical">
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginRight="@dimen/space15"
-                        android:layout_marginLeft="@dimen/space15"
-                        android:orientation="vertical">
+                        android:padding="@dimen/space15"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:src="@mipmap/icon_shengmirenwu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
 
 
-                        <TextView
-                            android:text="神秘任务"
-                            android:textColor="@color/colorGray3"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"/>
+                            android:layout_marginRight="@dimen/space15"
+                            android:layout_marginLeft="@dimen/space15"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:text="神秘任务"
+                                android:textColor="@color/colorGray3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"/>
+
+
+                            <TextView
+                                android:id="@+id/task_shenmi_info"
+                                android:text="领取消耗一个奖励金"
+                                android:textSize="@dimen/font12"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/space5"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"/>
+
+
+                            <TextView
+                                android:id="@+id/task_shenmi_jiangli"
+                                android:text="奖励金+6"
+                                android:textColor="@color/colorRed"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/space5"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"/>
+
+
+                        </LinearLayout>
 
 
                         <TextView
-                            android:id="@+id/task_shenmi_info"
-                            android:text="领取消耗一个奖励金"
-                            android:textSize="@dimen/font12"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/space5"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"/>
-
-
-                        <TextView
-                            android:id="@+id/task_shenmi_jiangli"
-                            android:text="奖励金+6"
-                            android:textColor="@color/colorRed"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/space5"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"/>
-
+                            android:id="@+id/task_shenmi_receive"
+                            android:text="领任务"
+                            android:background="@drawable/shape_button5"
+                            android:textColor="@color/colorYellow1"
+                            android:layout_width="@dimen/space80"
+                            android:layout_height="@dimen/space35"
+                            android:gravity="center"/>
 
                     </LinearLayout>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/space1"
+                        android:background="@color/colorGray2"/>
 
-                    <TextView
-                        android:id="@+id/task_shenmi_receive"
-                        android:text="领任务"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"/>
 
                 </LinearLayout>
 
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/space1"
-                    android:background="@color/colorGray2"/>
-
             </LinearLayout>
-
 
 
         </LinearLayout>

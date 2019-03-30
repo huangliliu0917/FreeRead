@@ -2,6 +2,7 @@ package com.yinglan.FreeRead.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,11 +23,23 @@ import com.flyco.animation.BounceEnter.BounceTopEnter;
 import com.flyco.animation.SlideExit.SlideBottomExit;
 import com.flyco.dialog.listener.OnBtnClickL;
 import com.flyco.dialog.widget.NormalDialog;
+import com.tsy.sdk.myokhttp.MyOkHttp;
+import com.tsy.sdk.myokhttp.response.JsonResponseHandler;
 import com.yinglan.FreeRead.Activitys.Activity_FindPassword;
 import com.yinglan.FreeRead.Activitys.Activity_Register;
 import com.yinglan.FreeRead.Activitys.Activity_UserAgreement;
 import com.yinglan.FreeRead.Activitys.MainActivity;
+import com.yinglan.FreeRead.Constant.HttpConstant;
+import com.yinglan.FreeRead.MyApplication;
 import com.yinglan.FreeRead.R;
+import com.yinglan.FreeRead.Utils.CountDownTimerUtils;
+import com.yinglan.FreeRead.Utils.StringUtils;
+import com.yinglan.FreeRead.wxapi.WXUtils;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -67,6 +80,7 @@ public class Fragment_Login_UsePhone extends Fragment {
 
     private NormalDialog normalDialog;
     private BaseAnimatorSet nBasIn,mBasOut;
+    private SharedPreferences sharedPreferences;
 
 
     @Nullable
@@ -78,9 +92,9 @@ public class Fragment_Login_UsePhone extends Fragment {
         unbinder = ButterKnife.bind(this, view);
 
         context = getContext();
+        sharedPreferences = context.getSharedPreferences("UserData",Context.MODE_PRIVATE);
         nBasIn = new BounceTopEnter();
         mBasOut = new SlideBottomExit();
-
         return view;
     }
 
@@ -96,19 +110,44 @@ public class Fragment_Login_UsePhone extends Fragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.login_usephone_btnGetCheckNum:
-                if (loginUsephonePhoneNumber.getText().length() == 0){
-                    Toast.makeText(context,"请输入手机号",Toast.LENGTH_SHORT).show();
+                String phoneNum = loginUsephonePhoneNumber.getText().toString();
+
+                if (StringUtils.isEmpty(phoneNum)){
+                    Toast.makeText(context,"手机号不能为空",Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(context,"验证码已发送，请注意查收",Toast.LENGTH_SHORT).show();
+                    if(!StringUtils.isMobile(phoneNum)){
+                        Toast.makeText(context,"手机号错误",Toast.LENGTH_SHORT).show();
+                    }else{
+                        CountDownTimerUtils mCountDownTimerUtils = new CountDownTimerUtils(context,loginUsephoneBtnGetCheckNum, phoneNum, 60000, 1000); //倒计时1分钟
+                        mCountDownTimerUtils.start();
+                    }
                 }
+
                 break;
             case R.id.btn_login_usephone_forgetPassword:
                 intent = new Intent(context,Activity_FindPassword.class);
                 startActivity(intent);
                 break;
             case R.id.btn_login_usephone:
-                intent = new Intent(context,MainActivity.class);
-                startActivity(intent);
+
+                String phoneNum1 = loginUsephonePhoneNumber.getText().toString();
+                String checkNum = loginUsephoneGetCheckNum.getText().toString();
+
+                if (StringUtils.isEmpty(phoneNum1) || StringUtils.isEmpty(checkNum)){
+                    Toast.makeText(context,"请填写用户信息",Toast.LENGTH_SHORT).show();
+                }else{
+                    //判断手机号
+                    if(!StringUtils.isMobile(phoneNum1)){
+                        Toast.makeText(context,"手机号错误",Toast.LENGTH_SHORT).show();
+                    }else if(StringUtils.isSame(checkNum,sharedPreferences.getString("SMSCode",""))){
+                        Toast.makeText(context,"验证码错误",Toast.LENGTH_SHORT).show();
+                    }else if(loginWithPhoneNum(phoneNum1,checkNum)){
+                            intent = new Intent(context,MainActivity.class);
+                            startActivity(intent);
+                            getActivity().finish();
+                    }
+                }
+
                 break;
             case R.id.btn_login_usephone_fromWeChat:
 
@@ -137,7 +176,7 @@ public class Fragment_Login_UsePhone extends Fragment {
                         new OnBtnClickL() {
                             @Override
                             public void onBtnClick() {
-                                normalDialog.dismiss();
+                                WXUtils.wxLogin(context);
                             }
                         });
 
@@ -184,5 +223,32 @@ public class Fragment_Login_UsePhone extends Fragment {
                 break;
         }
     }
+
+
+    /**
+     * @param phoneNum 手机号
+     * @param checkNum 验证码
+     * @return
+     */
+    public boolean loginWithPhoneNum(String phoneNum, String checkNum){
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("phoneNum", phoneNum);
+        params.put("checkNum", checkNum);
+
+        MyOkHttp.get().post(context, HttpConstant.login_with_phoneNum, params, new JsonResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, JSONObject response) {
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, String error_msg) {
+
+            }
+        });
+
+        return true;
+    }
+
 
 }

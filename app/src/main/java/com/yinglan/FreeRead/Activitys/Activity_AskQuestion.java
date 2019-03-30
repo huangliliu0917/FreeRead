@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
 import com.yinglan.FreeRead.R;
+import com.yinglan.FreeRead.Utils.StringUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,6 +36,9 @@ public class Activity_AskQuestion extends AppCompatActivity {
     EditText askQuestionAskConnect;
     @BindView(R.id.askQuestion_askCommit)
     TextView askQuestionAskCommit;
+
+
+    private static boolean isChecked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +78,17 @@ public class Activity_AskQuestion extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId){
+                    case R.id.askQuestion_askWrong:
+                        isChecked = true;
+                        break;
 
+                    case R.id.askQuestion_askSuggest:
+                        isChecked = true;
+                        break;
+
+                    case R.id.askQuestion_askOther:
+                        isChecked = true;
+                        break;
                 }
             }
         });
@@ -92,7 +106,17 @@ public class Activity_AskQuestion extends AppCompatActivity {
             case R.id.askQuestion_askOther:
                 break;
             case R.id.askQuestion_askCommit:
-                Toast.makeText(this,"提交成功",Toast.LENGTH_SHORT).show();
+
+                if (!isChecked){
+                    Toast.makeText(this,"请选择反馈类型",Toast.LENGTH_SHORT).show();
+                }else if(StringUtils.isEmpty(askQuestionAskInfo.getText().toString())){
+                    Toast.makeText(this,"请输入反馈内容",Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(this,"提交成功",Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+
+
                 break;
         }
     }

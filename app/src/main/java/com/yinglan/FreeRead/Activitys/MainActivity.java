@@ -1,52 +1,57 @@
 package com.yinglan.FreeRead.Activitys;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.yinglan.FreeRead.Fragments.Fragment_Home_chatHelp;
 import com.yinglan.FreeRead.Fragments.Fragment_Home_makeMoney;
 import com.yinglan.FreeRead.Fragments.Fragment_Home_personal;
 import com.yinglan.FreeRead.Fragments.Fragment_Home_readNews;
 import com.yinglan.FreeRead.R;
-import com.yinglan.FreeRead.Fragments.TextFragment;
 import com.yinglan.FreeRead.Utils.NoScrollViewPager;
 import com.yinglan.alphatabs.AlphaTabsIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import cn.jzvd.JZVideoPlayer;
+
 public class MainActivity extends AppCompatActivity {
 
-    private AlphaTabsIndicator alphaTabsIndicator;
+    @BindView(R.id.mViewPager)
+    NoScrollViewPager mViewPager;
+    @BindView(R.id.alphaIndicator)
+    AlphaTabsIndicator alphaIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
-        NoScrollViewPager mViewPger = (NoScrollViewPager) findViewById(R.id.mViewPager);
         MainAdapter mainAdapter = new MainAdapter(getSupportFragmentManager());
-        mViewPger.setAdapter(mainAdapter);
-        mViewPger.addOnPageChangeListener(mainAdapter);
-        mViewPger.setNoScroll(true);
+        mViewPager.setAdapter(mainAdapter);
+        mViewPager.addOnPageChangeListener(mainAdapter);
+        mViewPager.setNoScroll(true);
 
-        alphaTabsIndicator = (AlphaTabsIndicator) findViewById(R.id.alphaIndicator);
-        alphaTabsIndicator.setViewPager(mViewPger);
+        alphaIndicator.setViewPager(mViewPager);
     }
 
 
-    private class MainAdapter extends FragmentPagerAdapter implements ViewPager.OnPageChangeListener {
+    public class MainAdapter extends FragmentPagerAdapter implements ViewPager.OnPageChangeListener {
 
         private List<Fragment> fragments = new ArrayList<>();
         private String[] titles = {"自动赚钱", "新闻阅读", "微信助手", "个人中心"};
 
         public MainAdapter(FragmentManager fm) {
             super(fm);
-            fragments.add(new Fragment_Home_makeMoney());
+            fragments.add(new Fragment_Home_makeMoney(mViewPager));
             fragments.add(new Fragment_Home_readNews());
             fragments.add(new Fragment_Home_chatHelp());
             fragments.add(new Fragment_Home_personal());
@@ -70,11 +75,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onPageSelected(int position) {
             if (0 == position) {
-                alphaTabsIndicator.getTabView(0).showNumber(alphaTabsIndicator.getTabView(0).getBadgeNumber() - 1);
+                alphaIndicator.getTabView(0).showNumber(alphaIndicator.getTabView(0).getBadgeNumber() - 1);
             } else if (2 == position) {
-                alphaTabsIndicator.getCurrentItemView().removeShow();
+                alphaIndicator.getCurrentItemView().removeShow();
             } else if (3 == position) {
-                alphaTabsIndicator.removeAllBadge();
+                alphaIndicator.removeAllBadge();
             }
         }
 
@@ -83,4 +88,15 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+
+    @Override
+    public void onBackPressed() {
+        if (JZVideoPlayer.backPress()){
+            return;
+        }
+        super.onBackPressed();
+    }
+
+
 }

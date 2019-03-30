@@ -18,12 +18,13 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import cn.jzvd.JZVideoPlayer;
 
 /**
  * Created by ${AUTHOR} on 2019/3/23 0023
  * Function: ${Function}
  */
-public class Fragment_Home_readNews extends Fragment {
+public class Fragment_Home_readNews extends BaseFragment {
 
     public static final String BUNDLE_TITLE = "title";
     @BindView(R.id.home_tabs)
@@ -38,10 +39,18 @@ public class Fragment_Home_readNews extends Fragment {
     private List<Fragment> mFragmentList;
     private List<String> mTitleList;
 
+    /*懒加载处理*/
+    private boolean mHasLoadedOnce = false;
+    private boolean isPrepared = false;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home_read_news, null);
         unbinder = ButterKnife.bind(this, view);
+
+        isPrepared = true;
+        lazyLoad();
+
         initTitles();
         initFragments();
 
@@ -91,8 +100,24 @@ public class Fragment_Home_readNews extends Fragment {
 
 
     @Override
+    protected void lazyLoad() {
+        if (mHasLoadedOnce || !isPrepared)
+            return;
+        mHasLoadedOnce = true;
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        mHasLoadedOnce = false;
+        isPrepared = false;
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        JZVideoPlayer.releaseAllVideos();
     }
 }

@@ -123,6 +123,7 @@
                 android:id="@+id/register_checkCode"
                 android:hint="验证码"
                 android:maxLines="1"
+                android:maxLength="10"
                 android:layout_weight="4"
                 android:drawableLeft="@mipmap/icon_xinxi"
                 android:drawablePadding="@dimen/space10"

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,7 +26,9 @@ import com.hjq.bar.TitleBar;
 import com.yinglan.FreeRead.Adapters.Adapter_selectBankCard;
 import com.yinglan.FreeRead.Base.CardBean;
 import com.yinglan.FreeRead.R;
+import com.yinglan.FreeRead.Utils.StringUtils;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,6 +61,22 @@ public class Activity_TiXian extends AppCompatActivity implements View.OnClickLi
     private View view;
     private List<CardBean> cardBeans;
     private CardBean cardBean;
+
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case 1:
+
+                    Bundle bundle = msg.getData();
+                    String canUse = bundle.getString("canUse");
+
+                    tixianCanTiXianNum.setText(canUse);
+
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +116,6 @@ public class Activity_TiXian extends AppCompatActivity implements View.OnClickLi
             }
         });
     }
-
 
     public void initData() {
         adapter = new Adapter_selectBankCard(getApplicationContext(),this);
@@ -144,8 +163,23 @@ public class Activity_TiXian extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.tixian_commit:
 
-                if (tixianWantTiXianNum.getText().length() != 0 && cardBean != null){
-                    Toast.makeText(context,"提现已发起",Toast.LENGTH_SHORT).show();
+                if (!StringUtils.isEmpty(tixianWantTiXianNum.getText().toString()) && cardBean != null){
+
+                    if (Float.valueOf(tixianCanTiXianNum.getText().toString()) >= Float.valueOf(tixianWantTiXianNum.getText().toString())){
+
+                        float canUse = Float.valueOf(tixianCanTiXianNum.getText().toString()) - Float.valueOf(tixianWantTiXianNum.getText().toString());
+
+                        Message message = new Message();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("canUse",String.valueOf(new DecimalFormat("#.00").format(canUse)));
+                        message.setData(bundle);
+                        message.what = 1;
+                        handler.sendMessage(message);
+
+                        Toast.makeText(context,"提现已发起",Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(context,"钱包余额不足",Toast.LENGTH_SHORT).show();
+                    }
                 }else{
                     Toast.makeText(context,"请填写正确信息",Toast.LENGTH_SHORT).show();
                 }

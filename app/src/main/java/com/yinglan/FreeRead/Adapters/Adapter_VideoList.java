@@ -64,4 +64,10 @@ public class Adapter_VideoList extends RecyclerView.Adapter {
     public int getItemCount() {
         return 10;
     }
+
+
+
+
+
+
 }

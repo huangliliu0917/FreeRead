@@ -104,6 +104,7 @@
                 <EditText
                     android:id="@+id/askQuestion_askInfo"
                     android:hint="描述你的问题"
+                    android:textSize="@dimen/font14"
                     android:gravity="top"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/space200"
@@ -131,9 +132,11 @@
 
                 <EditText
                     android:id="@+id/askQuestion_askConnect"
-                    android:hint="描述你的问题"
+                    android:hint="如果可以，留个联系方式"
+                    android:textSize="@dimen/font14"
                     android:gravity="top"
-                    android:maxLines="2"
+                    android:maxLength="12"
+                    android:inputType="number"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/shape_button3"/>

@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
@@ -98,10 +99,16 @@ public class Activity_Task extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.task_chaoji_receive:
+                taskChaoji.setVisibility(View.GONE);
+                Toast.makeText(context,"已领取任务",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.task_yexiao_receive:
+                taskYexiao.setVisibility(View.GONE);
+                Toast.makeText(context,"已领取任务",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.task_shenmi_receive:
+                taskShenmi.setVisibility(View.GONE);
+                Toast.makeText(context,"已领取任务",Toast.LENGTH_SHORT).show();
                 break;
         }
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:rsv="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -102,12 +102,20 @@
                 android:gravity="left"/>
 
 
-            <com.chan.rsv.RangeSliderView
+
+            <com.yinglan.FreeRead.Utils.MutiProgress
                 android:id="@+id/rsv_small"
                 android:layout_marginTop="@dimen/space5"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/space30"
-                rsv:filledColor="@color/colorWhite" />
+                app:nodesNum="7"
+                app:currNodeState="1"
+                app:currNodeNO="2"
+                app:nodeRadius="@dimen/space7"
+                app:processingLineColor="@color/colorBlue1"
+                app:unprogressingDrawable="@drawable/shape_qiandao"
+                app:progressingDrawable="@mipmap/icon_qiandao1"
+                app:progresSuccDrawable="@mipmap/icon_qiandao1"/>
 
 
 
@@ -220,15 +228,17 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
                     <ProgressBar
                         android:id="@+id/qiandao_zengsonged_progress"
                         android:max="2"
                         android:progress="1"
                         style="?android:attr/progressBarStyleHorizontal"
+                        android:progressDrawable="@drawable/progressbar"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/space5"
                         android:layout_weight="1"/>
 
 
@@ -245,14 +255,15 @@
             </LinearLayout>
 
 
-            <TextView
+            <RadioButton
                 android:id="@+id/btn_qiandao_zengsong_go"
                 android:text="立即前往"
-                android:textColor="@color/radiobutton_textcolor"
+                android:button="@null"
+                android:textColor="@color/radiobutton_textcolor1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:background="@drawable/btn_select1"
+                android:background="@drawable/btn_select"
                 android:padding="@dimen/space10"/>
 
         </LinearLayout>
@@ -310,14 +321,15 @@
             </LinearLayout>
 
 
-            <TextView
+            <RadioButton
                 android:id="@+id/btn_qiandao_shouji_go"
-                android:text="立即前往"
-                android:textColor="@color/radiobutton_textcolor"
+                android:text="领取积分"
+                android:button="@null"
+                android:textColor="@color/radiobutton_textcolor1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:background="@drawable/btn_select1"
+                android:background="@drawable/btn_select"
                 android:padding="@dimen/space10"/>
 
         </LinearLayout>
@@ -374,14 +386,15 @@
             </LinearLayout>
 
 
-            <TextView
+            <RadioButton
                 android:id="@+id/btn_qiandao_canyu_go"
-                android:text="立即前往"
-                android:textColor="@color/radiobutton_textcolor"
+                android:text="领取积分"
+                android:button="@null"
+                android:textColor="@color/radiobutton_textcolor1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:background="@drawable/btn_select1"
+                android:background="@drawable/btn_select"
                 android:padding="@dimen/space10"/>
 
         </LinearLayout>
@@ -439,14 +452,15 @@
             </LinearLayout>
 
 
-            <TextView
+            <RadioButton
                 android:id="@+id/btn_qiandao_shoujiWeatherCard_go"
-                android:text="立即前往"
-                android:textColor="@color/radiobutton_textcolor"
+                android:text="领取积分"
+                android:button="@null"
+                android:textColor="@color/radiobutton_textcolor1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:background="@drawable/btn_select1"
+                android:background="@drawable/btn_select"
                 android:padding="@dimen/space10"/>
 
         </LinearLayout>

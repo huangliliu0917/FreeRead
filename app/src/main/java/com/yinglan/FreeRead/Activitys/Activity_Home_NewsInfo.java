@@ -1,5 +1,6 @@
 package com.yinglan.FreeRead.Activitys;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -16,7 +17,10 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.hjq.bar.OnTitleBarListener;
+import com.hjq.bar.TitleBar;
 import com.yinglan.FreeRead.R;
+import com.yinglan.FreeRead.Utils.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,6 +31,10 @@ public class Activity_Home_NewsInfo extends AppCompatActivity {
     WebView homeNewsInfoWeb;
     @BindView(R.id.home_newsInfo_progress)
     ProgressBar homeNewsInfoProgress;
+    @BindView(R.id.NewsInfo_titleBar)
+    TitleBar NewsInfoTitleBar;
+
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,22 +42,41 @@ public class Activity_Home_NewsInfo extends AppCompatActivity {
         setContentView(R.layout.activity__home__news_info);
         ButterKnife.bind(this);
 
+        context = getApplicationContext();
+
         initView();
     }
 
     public void initView() {
 
+        NewsInfoTitleBar.setTitle("新闻详情");
+        NewsInfoTitleBar.setLeftIcon(this.getResources().getDrawable(R.mipmap.icon_fanghuijian));
+        NewsInfoTitleBar.setRightIcon(this.getResources().getDrawable(R.mipmap.icon_fenxiang));
+        NewsInfoTitleBar.setTitleColor(this.getResources().getColor(R.color.colorWhite));
+        NewsInfoTitleBar.setBackgroundColor(this.getResources().getColor(R.color.textSelect));
+        NewsInfoTitleBar.setOnTitleBarListener(new OnTitleBarListener() {
+            @Override
+            public void onLeftClick(View v) {
+                finish();
+            }
+
+            @Override
+            public void onTitleClick(View v) {
+
+            }
+
+            @Override
+            public void onRightClick(View v) {
+                ToastUtils.showShort(context,"进入分享");
+            }
+        });
+
+        /*webView相关配置*/
         homeNewsInfoWeb.loadUrl("file:///android_asset/test.html");//加载asset文件夹下html
         homeNewsInfoWeb.loadUrl("http://www.baidu.com");//加载url
-
-        //使用webview显示html代码
-//        webView.loadDataWithBaseURL(null,"<html><head><title> 欢迎您 </title></head>" +
-//                "<body><h2>使用webview显示 html代码</h2></body></html>", "text/html" , "utf-8", null);
-
         homeNewsInfoWeb.addJavascriptInterface(this, "android");//添加js监听 这样html就能调用客户端
         homeNewsInfoWeb.setWebChromeClient(webChromeClient);
         homeNewsInfoWeb.setWebViewClient(webViewClient);
-
         WebSettings webSettings = homeNewsInfoWeb.getSettings();
         webSettings.setJavaScriptEnabled(true);//允许使用js
 
@@ -66,7 +93,7 @@ public class Activity_Home_NewsInfo extends AppCompatActivity {
         webSettings.setBuiltInZoomControls(true);
 
         //不显示webview缩放按钮
-//        webSettings.setDisplayZoomControls(false);
+        //        webSettings.setDisplayZoomControls(false);
     }
 
     //WebViewClient主要帮助WebView处理各种通知、请求事件
