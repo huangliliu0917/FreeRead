@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.tencent.tauth.Tencent;
 
 /**
  * Created by ${AUTHOR} on 2019/3/29 0029
@@ -19,7 +20,11 @@ public class MyApplication extends Application {
     /*微信*/
     public static IWXAPI mWXapi;
     public String WX_APP_ID = "5436423452345234";
-
+    /*QQ*/
+    private Tencent mTencent;
+    public String QQ_APP_ID = "101562333";//app-id
+    public String QQ_APP_KEY = "de8e41e28d25402a4b49e3e044b63eea";//app-key
+    public String QQ_APP_PACKAGE = "99bb1a60480d6b178b183cc2a1eb5b50";//应用签名
 
     /*发送短信需要的字段*/
     public final static String CorpID = "XAJS008093";
@@ -36,6 +41,8 @@ public class MyApplication extends Application {
 
         //向微信注册
         registerToWX();
+        //注册QQ
+        registerToQQ();
 
     }
 
@@ -45,7 +52,7 @@ public class MyApplication extends Application {
     }
 
     private void registerToQQ(){
-
+        mTencent = Tencent.createInstance(QQ_APP_ID, this.getApplicationContext());
     }
 
 
