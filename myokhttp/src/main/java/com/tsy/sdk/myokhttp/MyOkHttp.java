@@ -75,7 +75,7 @@ public class MyOkHttp {
      * post 请求
      * @param context 发起请求的context
      * @param url url
-     * @param params 参数
+     * @param params map类型的参数
      * @param responseHandler 回调
      */
     public void post(Context context, final String url, final Map<String, String> params, final IResponseHandler responseHandler) {
@@ -106,6 +106,45 @@ public class MyOkHttp {
 
         client.newCall(request).enqueue(new MyCallback(new Handler(), responseHandler));
     }
+
+
+    /**
+     * post 请求
+     * @param context 发起请求的context
+     * @param url url
+     * @param dataInfo string类型的参数
+     * @param responseHandler 回调
+     */
+    public void post(Context context, final String url, final String dataInfo, final IResponseHandler responseHandler) {
+        //post builder 参数
+
+        RequestBody requestBody = FormBody.create(MediaType.parse("application/json; charset=utf-8")
+                , dataInfo);
+
+        Request request;
+
+        //发起request
+        if(context == null) {
+            request = new Request.Builder()
+                    .url(url)
+                    .post(requestBody)
+                    .build();
+        } else {
+            request = new Request.Builder()
+                    .url(url)
+                    .post(requestBody)
+                    .tag(context)
+                    .build();
+        }
+
+
+        client.newCall(request).enqueue(new MyCallback(new Handler(), responseHandler));
+    }
+
+
+
+
+
 
     /**
      * get 请求

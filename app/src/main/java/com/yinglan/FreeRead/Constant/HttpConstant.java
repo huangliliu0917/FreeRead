@@ -7,11 +7,11 @@ package com.yinglan.FreeRead.Constant;
 public class HttpConstant {
 
     /*服务器地址*/
-
+    /*http://www.yybweb.com/NewsReader_WebApi/api/UserSystem/*/
     /*本地地址*/
     /*http://192.168.50.168/NewsReaderWebApi/api/UserSystem/*/
 
-    public static final String URL = "http://192.168.50.168/NewsReaderWebApi/api/UserSystem/";
+    public static final String URL = "http://www.yybweb.com/NewsReader_WebApi/api/UserSystem/";
 
     /*发送验证码*/
     public static final String sendNote = "https://sdk2.028lk.com/sdk2/BatchSend2.aspx";

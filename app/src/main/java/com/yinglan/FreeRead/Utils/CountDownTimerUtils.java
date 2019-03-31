@@ -100,7 +100,7 @@ public class CountDownTimerUtils extends CountDownTimer {
             e.printStackTrace();
         }
 
-        MyOkHttp.get().post(context, String.valueOf(url), null, new RawResponseHandler() {
+        MyOkHttp.get().post(context, String.valueOf(url), (Map<String, String>) null, new RawResponseHandler() {
             @Override
             public void onSuccess(int statusCode, String response) {
                 LogUtils.d("短信发送成功-------》"+response);
