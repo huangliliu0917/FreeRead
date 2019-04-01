@@ -7,12 +7,13 @@ import android.view.View;
 
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
+import com.yinglan.FreeRead.BaseActivity;
 import com.yinglan.FreeRead.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Activity_TaskInfo extends AppCompatActivity {
+public class Activity_TaskInfo extends BaseActivity {
 
     @BindView(R.id.taskInfo_titleBar)
     TitleBar taskInfoTitleBar;

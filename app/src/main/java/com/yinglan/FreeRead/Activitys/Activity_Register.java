@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,17 +11,13 @@ import android.widget.Toast;
 
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
-import com.tsy.sdk.myokhttp.MyOkHttp;
-import com.tsy.sdk.myokhttp.response.JsonResponseHandler;
-import com.tsy.sdk.myokhttp.response.RawResponseHandler;
+import com.yinglan.FreeRead.BaseActivity;
 import com.yinglan.FreeRead.Constant.HttpConnect;
-import com.yinglan.FreeRead.Constant.HttpConstant;
+import com.yinglan.FreeRead.Imp.MakeActivityDoSomething;
 import com.yinglan.FreeRead.R;
 import com.yinglan.FreeRead.Utils.CountDownTimerUtils;
-import com.yinglan.FreeRead.Utils.LogUtils;
+import com.yinglan.FreeRead.Utils.MyActivityManager;
 import com.yinglan.FreeRead.Utils.StringUtils;
-
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +29,7 @@ import butterknife.OnClick;
 /**
  * 注册页面
  */
-public class Activity_Register extends AppCompatActivity {
+public class Activity_Register extends BaseActivity implements MakeActivityDoSomething {
 
     @BindView(R.id.register_email)
     EditText registerEmail;
@@ -66,6 +61,9 @@ public class Activity_Register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        MyActivityManager.getAppManager().addActivity(this);
+
         setContentView(R.layout.activity__register);
         ButterKnife.bind(this);
         context = getApplicationContext();
@@ -140,16 +138,16 @@ public class Activity_Register extends AppCompatActivity {
                     //判断手机号
                     if(!StringUtils.isMobile(phoneNum1)){
                         Toast.makeText(context,"手机号错误",Toast.LENGTH_SHORT).show();
-                    }else if(HttpConnect.register(context,eMail,password,phoneNum1)){
+                    }else{
 
-                        intent = new Intent(context,MainActivity.class);
-                        startActivity(intent);
-                        finish();
+                        Map<String, String> registerData = new HashMap<String, String>();
+                        registerData.put("Email", eMail);
+                        registerData.put("Password", password);
+                        registerData.put("PhoneNumber", phoneNum1);
 
+                        HttpConnect.register(context,registerData,this);
                     }
                 }
-
-
                 break;
             case R.id.btn_register_useAccount:
                 intent = new Intent(context, Activity_Login.class);
@@ -160,5 +158,13 @@ public class Activity_Register extends AppCompatActivity {
                 startActivity(intent);
                 break;
         }
+    }
+
+    /**
+    * 回调，销毁当前页面
+    */
+    @Override
+    public void doFinish() {
+        finish();
     }
 }

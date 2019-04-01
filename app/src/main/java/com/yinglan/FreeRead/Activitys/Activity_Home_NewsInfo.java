@@ -19,13 +19,14 @@ import android.widget.Toast;
 
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
+import com.yinglan.FreeRead.BaseActivity;
 import com.yinglan.FreeRead.R;
 import com.yinglan.FreeRead.Utils.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Activity_Home_NewsInfo extends AppCompatActivity {
+public class Activity_Home_NewsInfo extends BaseActivity {
 
     @BindView(R.id.home_newsInfo_web)
     WebView homeNewsInfoWeb;
@@ -42,12 +43,14 @@ public class Activity_Home_NewsInfo extends AppCompatActivity {
         setContentView(R.layout.activity__home__news_info);
         ButterKnife.bind(this);
 
+        String str = getIntent().getStringExtra("url");
+
         context = getApplicationContext();
 
-        initView();
+        initView(str);
     }
 
-    public void initView() {
+    public void initView(String str) {
 
         NewsInfoTitleBar.setTitle("新闻详情");
         NewsInfoTitleBar.setLeftIcon(this.getResources().getDrawable(R.mipmap.icon_fanghuijian));
@@ -73,7 +76,7 @@ public class Activity_Home_NewsInfo extends AppCompatActivity {
 
         /*webView相关配置*/
         homeNewsInfoWeb.loadUrl("file:///android_asset/test.html");//加载asset文件夹下html
-        homeNewsInfoWeb.loadUrl("http://www.baidu.com");//加载url
+        homeNewsInfoWeb.loadUrl(str);//加载url
         homeNewsInfoWeb.addJavascriptInterface(this, "android");//添加js监听 这样html就能调用客户端
         homeNewsInfoWeb.setWebChromeClient(webChromeClient);
         homeNewsInfoWeb.setWebViewClient(webViewClient);

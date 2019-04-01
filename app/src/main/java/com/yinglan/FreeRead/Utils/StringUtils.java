@@ -179,4 +179,23 @@ public class StringUtils {
     }
 
 
+    /**
+     * 去掉Json中的反斜杠
+     * @param obj
+     * @return
+     */
+    public static String getJson(String obj){
+        obj = obj.replace("\\", "");
+        char[] array = obj.toCharArray();
+        char[] charArray = new char[array.length - 2];
+
+        for (int i = 1; i < array.length - 1; i++)
+        {
+            charArray[i - 1] = array[i];
+
+        }
+        return new String(charArray);
+    }
+
+
 }

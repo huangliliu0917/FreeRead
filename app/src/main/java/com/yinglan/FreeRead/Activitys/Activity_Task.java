@@ -4,56 +4,69 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
+import com.yinglan.FreeRead.BaseActivity;
+import com.yinglan.FreeRead.Constant.HttpConnect;
+import com.yinglan.FreeRead.MyApplication;
 import com.yinglan.FreeRead.R;
+import com.yinglan.FreeRead.Utils.ToastUtils;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class Activity_Task extends AppCompatActivity {
+public class Activity_Task extends BaseActivity {
+
 
     @BindView(R.id.task_titleBar)
     TitleBar taskTitleBar;
-    @BindView(R.id.task_chaoji_info)
-    TextView taskChaojiInfo;
-    @BindView(R.id.task_chaoji_jiangli)
-    TextView taskChaojiJiangli;
-    @BindView(R.id.task_chaoji_receive)
-    TextView taskChaojiReceive;
-    @BindView(R.id.task_chaoji)
-    LinearLayout taskChaoji;
-    @BindView(R.id.task_yexiao_info)
-    TextView taskYexiaoInfo;
-    @BindView(R.id.task_yexiao_jiangli)
-    TextView taskYexiaoJiangli;
-    @BindView(R.id.task_yexiao_receive)
-    TextView taskYexiaoReceive;
-    @BindView(R.id.task_yexiao)
-    LinearLayout taskYexiao;
-    @BindView(R.id.task_shenmi_info)
-    TextView taskShenmiInfo;
-    @BindView(R.id.task_shenmi_jiangli)
-    TextView taskShenmiJiangli;
-    @BindView(R.id.task_shenmi_receive)
-    TextView taskShenmiReceive;
-    @BindView(R.id.task_shenmi)
-    LinearLayout taskShenmi;
     @BindView(R.id.task_finishNum)
     TextView taskFinishNum;
     @BindView(R.id.task_jiangliNum)
     TextView taskJiangliNum;
-
+    @BindView(R.id.task_list)
+    RecyclerView taskList;
 
     private Context context;
     private Intent intent;
+    private Handler handler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+
+                //刷新数据
+                case 1:
+
+                    initNet_Data();
+                    break;
+
+                //设置数据
+                case 2:
+
+                    Bundle bundle = msg.getData();
+                    String taskedcount = bundle.getString("taskedcount");
+                    String totalincome = bundle.getString("totalincome");
+
+                    ToastUtils.showShort(context,"已完成"+taskedcount+",累计"+totalincome);
+
+                    taskFinishNum.setText(taskedcount);
+                    taskJiangliNum.setText(totalincome);
+
+
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +77,14 @@ public class Activity_Task extends AppCompatActivity {
         context = this;
 
         initView();
+        initNet_Data();
+    }
+
+    public void initNet_Data() {
+
+        Map<String, String> params = new HashMap<>();
+        params.put("userId", MyApplication.sharedPreferences.getString("user_id", ""));
+        HttpConnect.getTaskListOfStarting(context, params, taskList, handler);
     }
 
 
@@ -93,23 +114,5 @@ public class Activity_Task extends AppCompatActivity {
             }
         });
 
-    }
-
-    @OnClick({R.id.task_chaoji_receive, R.id.task_yexiao_receive, R.id.task_shenmi_receive})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.task_chaoji_receive:
-                taskChaoji.setVisibility(View.GONE);
-                Toast.makeText(context,"已领取任务",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.task_yexiao_receive:
-                taskYexiao.setVisibility(View.GONE);
-                Toast.makeText(context,"已领取任务",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.task_shenmi_receive:
-                taskShenmi.setVisibility(View.GONE);
-                Toast.makeText(context,"已领取任务",Toast.LENGTH_SHORT).show();
-                break;
-        }
     }
 }

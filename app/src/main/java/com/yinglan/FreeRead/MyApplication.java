@@ -8,6 +8,8 @@ import android.preference.PreferenceManager;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.tencent.tauth.Tencent;
+import com.yinglan.FreeRead.Utils.MyActivityManager;
+import com.yinglan.FreeRead.Utils.NetRequest;
 
 /**
  * Created by ${AUTHOR} on 2019/3/29 0029
@@ -16,6 +18,8 @@ import com.tencent.tauth.Tencent;
 public class MyApplication extends Application {
 
     private Context context;
+    public static SharedPreferences.Editor editor = null;
+    public static SharedPreferences sharedPreferences = null;
 
     /*微信*/
     public static IWXAPI mWXapi;
@@ -35,15 +39,20 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         context = getApplicationContext();
 
-
+        //注册SharedPreference存储
+        initSP();
         //向微信注册
         registerToWX();
         //注册QQ
         registerToQQ();
 
+    }
+
+    public void initSP(){
+        editor = context.getSharedPreferences("UserInfo",MODE_PRIVATE).edit();
+        sharedPreferences = context.getSharedPreferences("UserInfo",MODE_PRIVATE);
     }
 
     private void registerToWX() {
@@ -54,7 +63,6 @@ public class MyApplication extends Application {
     private void registerToQQ(){
         mTencent = Tencent.createInstance(QQ_APP_ID, this.getApplicationContext());
     }
-
 
     public Context getContext() {
         return context;

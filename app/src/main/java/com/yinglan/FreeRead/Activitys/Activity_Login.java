@@ -1,23 +1,23 @@
 package com.yinglan.FreeRead.Activitys;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
 import com.yinglan.FreeRead.Adapters.MyPagerAdapter;
+import com.yinglan.FreeRead.BaseActivity;
 import com.yinglan.FreeRead.Fragments.Fragment_Login_UsePassword;
 import com.yinglan.FreeRead.Fragments.Fragment_Login_UsePhone;
-import com.yinglan.FreeRead.Fragments.Fragment_ReadSet_functionSet;
-import com.yinglan.FreeRead.Fragments.Fragment_ReadSet_instruction;
 import com.yinglan.FreeRead.R;
+import com.yinglan.FreeRead.Utils.MyActivityManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Activity_Login extends AppCompatActivity {
+public class Activity_Login extends BaseActivity {
 
     @BindView(R.id.login_titleBar)
     TitleBar loginTitleBar;
@@ -37,6 +37,7 @@ public class Activity_Login extends AppCompatActivity {
     LinearLayout loginMain;
 
     private Intent intent;
+    private Context context;
 
     private List<Fragment> mFragmentList;
     private List<String> mTitleList;
@@ -44,12 +45,14 @@ public class Activity_Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        MyActivityManager.getAppManager().addActivity(this);
+
         setContentView(R.layout.activity__login);
         ButterKnife.bind(this);
         intent = new Intent();
+        context = getApplicationContext();
         initView();
-
-
         initTitles();
         initFragments();
 
@@ -94,6 +97,4 @@ public class Activity_Login extends AppCompatActivity {
         mFragmentList.add(new Fragment_Login_UsePassword());
         mFragmentList.add(new Fragment_Login_UsePhone());
     }
-
-
 }

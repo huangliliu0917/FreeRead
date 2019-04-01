@@ -12,9 +12,11 @@ import android.widget.Toast;
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
 import com.yinglan.FreeRead.Adapters.MyPagerAdapter;
+import com.yinglan.FreeRead.BaseActivity;
 import com.yinglan.FreeRead.Fragments.Fragment_ReadSet_functionSet;
 import com.yinglan.FreeRead.Fragments.Fragment_ReadSet_instruction;
 import com.yinglan.FreeRead.R;
+import com.yinglan.FreeRead.Utils.MyActivityManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +24,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Activity_ReadSet extends AppCompatActivity {
+public class Activity_ReadSet extends BaseActivity {
 
     @BindView(R.id.readSet_titleBar)
     TitleBar readSetTitleBar;
@@ -39,6 +41,8 @@ public class Activity_ReadSet extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MyActivityManager.getAppManager().addActivity(this);
+
         setContentView(R.layout.activity__read_set);
         ButterKnife.bind(this);
 

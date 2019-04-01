@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.yinglan.FreeRead.BaseActivity;
 import com.yinglan.FreeRead.Fragments.Fragment_Home_chatHelp;
 import com.yinglan.FreeRead.Fragments.Fragment_Home_makeMoney;
 import com.yinglan.FreeRead.Fragments.Fragment_Home_personal;
@@ -22,7 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.jzvd.JZVideoPlayer;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @BindView(R.id.mViewPager)
     NoScrollViewPager mViewPager;

@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.yinglan.FreeRead.BaseActivity;
+import com.yinglan.FreeRead.MyApplication;
 import com.yinglan.FreeRead.R;
 
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
 
     @BindView(R.id.splash_container)
     RelativeLayout splashContainer;
@@ -34,8 +36,15 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
+        dealWithPersission();
 
-        //进行运行时权限处理
+    }
+
+
+    /**
+     * 进行运行时权限处理
+     */
+    private void dealWithPersission(){
         List<String> persissionList = new ArrayList<>();
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -57,15 +66,24 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
 
-
     /**
      * 请求开屏广告
      */
     private void requestAds(){
 
+        Boolean isLogin = MyApplication.sharedPreferences.getBoolean("user_Logined",false);
+
+        //判断用户是否已经登录
+        if (isLogin){
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent(this,Activity_Login.class);
+            startActivity(intent);
+        }
+
         Toast.makeText(this,"广告加载成功",Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this,Activity_Login.class);
-        startActivity(intent);
+
         finish();
 
     }

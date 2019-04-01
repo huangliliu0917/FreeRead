@@ -10,13 +10,14 @@ import android.widget.Toast;
 
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
+import com.yinglan.FreeRead.BaseActivity;
 import com.yinglan.FreeRead.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class Activity_Setting_MyBankCard extends AppCompatActivity {
+public class Activity_Setting_MyBankCard extends BaseActivity {
 
     @BindView(R.id.setting_myBankCard_titleBar)
     TitleBar settingMyBankCardTitleBar;

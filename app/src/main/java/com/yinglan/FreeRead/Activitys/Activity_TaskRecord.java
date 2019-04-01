@@ -12,13 +12,14 @@ import android.widget.Toast;
 
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
+import com.yinglan.FreeRead.BaseActivity;
 import com.yinglan.FreeRead.R;
 import com.yinglan.FreeRead.Utils.MyExpandableListView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Activity_TaskRecord extends AppCompatActivity {
+public class Activity_TaskRecord extends BaseActivity {
 
     @BindView(R.id.taskrecord_titleBar)
     TitleBar taskrecordTitleBar;

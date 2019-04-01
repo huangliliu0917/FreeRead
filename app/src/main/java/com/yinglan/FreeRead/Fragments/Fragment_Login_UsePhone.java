@@ -29,7 +29,9 @@ import com.yinglan.FreeRead.Activitys.Activity_FindPassword;
 import com.yinglan.FreeRead.Activitys.Activity_Register;
 import com.yinglan.FreeRead.Activitys.Activity_UserAgreement;
 import com.yinglan.FreeRead.Activitys.MainActivity;
+import com.yinglan.FreeRead.Constant.HttpConnect;
 import com.yinglan.FreeRead.Constant.HttpConstant;
+import com.yinglan.FreeRead.Imp.MakeActivityDoSomething;
 import com.yinglan.FreeRead.MyApplication;
 import com.yinglan.FreeRead.R;
 import com.yinglan.FreeRead.Utils.CountDownTimerUtils;
@@ -50,7 +52,7 @@ import butterknife.Unbinder;
  * Created by Frank on 2019/3/28
  * Introduce : ${Text}
  */
-public class Fragment_Login_UsePhone extends Fragment {
+public class Fragment_Login_UsePhone extends Fragment implements MakeActivityDoSomething {
 
 
     @BindView(R.id.login_usephone_phoneNumber)
@@ -80,7 +82,6 @@ public class Fragment_Login_UsePhone extends Fragment {
 
     private NormalDialog normalDialog;
     private BaseAnimatorSet nBasIn,mBasOut;
-    private SharedPreferences sharedPreferences;
 
 
     @Nullable
@@ -92,7 +93,6 @@ public class Fragment_Login_UsePhone extends Fragment {
         unbinder = ButterKnife.bind(this, view);
 
         context = getContext();
-        sharedPreferences = context.getSharedPreferences("UserData",Context.MODE_PRIVATE);
         nBasIn = new BounceTopEnter();
         mBasOut = new SlideBottomExit();
         return view;
@@ -139,12 +139,14 @@ public class Fragment_Login_UsePhone extends Fragment {
                     //判断手机号
                     if(!StringUtils.isMobile(phoneNum1)){
                         Toast.makeText(context,"手机号错误",Toast.LENGTH_SHORT).show();
-                    }else if(StringUtils.isSame(checkNum,sharedPreferences.getString("SMSCode",""))){
+                    }else if(StringUtils.isSame(checkNum,MyApplication.sharedPreferences.getString("SMSCode",""))){
                         Toast.makeText(context,"验证码错误",Toast.LENGTH_SHORT).show();
-                    }else if(loginWithPhoneNum(phoneNum1,checkNum)){
-                            intent = new Intent(context,MainActivity.class);
-                            startActivity(intent);
-                            getActivity().finish();
+                    }else{
+
+                        Map<String,String> loginData = new HashMap<>();
+                        loginData.put("phoneNumber",phoneNum1);
+                        HttpConnect.loginWithSMS(context,loginData,this);
+
                     }
                 }
 
@@ -177,6 +179,7 @@ public class Fragment_Login_UsePhone extends Fragment {
                             @Override
                             public void onBtnClick() {
                                 WXUtils.wxLogin(context);
+                                normalDialog.dismiss();
                             }
                         });
 
@@ -224,31 +227,8 @@ public class Fragment_Login_UsePhone extends Fragment {
         }
     }
 
-
-    /**
-     * @param phoneNum 手机号
-     * @param checkNum 验证码
-     * @return
-     */
-    public boolean loginWithPhoneNum(String phoneNum, String checkNum){
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("phoneNum", phoneNum);
-        params.put("checkNum", checkNum);
-
-        MyOkHttp.get().post(context, HttpConstant.login_with_phoneNum, params, new JsonResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, JSONObject response) {
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, String error_msg) {
-
-            }
-        });
-
-        return true;
+    @Override
+    public void doFinish() {
+        getActivity().finish();
     }
-
-
 }

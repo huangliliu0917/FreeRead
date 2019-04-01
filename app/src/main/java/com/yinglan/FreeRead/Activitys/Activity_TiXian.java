@@ -25,6 +25,7 @@ import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
 import com.yinglan.FreeRead.Adapters.Adapter_selectBankCard;
 import com.yinglan.FreeRead.Base.CardBean;
+import com.yinglan.FreeRead.BaseActivity;
 import com.yinglan.FreeRead.R;
 import com.yinglan.FreeRead.Utils.StringUtils;
 
@@ -36,7 +37,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class Activity_TiXian extends AppCompatActivity implements View.OnClickListener, Adapter_selectBankCard.OnItemClickListener {
+public class Activity_TiXian extends BaseActivity implements View.OnClickListener, Adapter_selectBankCard.OnItemClickListener {
 
     @BindView(R.id.TiXian_titleBar)
     TitleBar TiXianTitleBar;

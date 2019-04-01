@@ -10,6 +10,8 @@ import android.telephony.SmsMessage;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.yinglan.FreeRead.MyApplication;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,8 +22,6 @@ import java.util.regex.Pattern;
 public class SMSReceiver extends BroadcastReceiver {
 
     private static final String TAG = "SMSReceiver";
-    private SharedPreferences.Editor editor;
-
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -29,7 +29,6 @@ public class SMSReceiver extends BroadcastReceiver {
 
         getMsg(context, intent);
 
-        editor = context.getSharedPreferences("UserData",Context.MODE_PRIVATE).edit();
     }
 
 
@@ -74,8 +73,8 @@ public class SMSReceiver extends BroadcastReceiver {
 
             String code = matcher1.group(0);
 
-            editor.putString("SMSCode",code);
-            editor.apply();
+            MyApplication.editor.putString("SMSCode",code);
+            MyApplication.editor.apply();
 
             // 创建普通字符型ClipData
             ClipData mClipData = ClipData.newPlainText("Label", code);
@@ -87,8 +86,8 @@ public class SMSReceiver extends BroadcastReceiver {
         }else if(matcher2.find()){
 
             String code = matcher2.group(0);
-            editor.putString("SMSCode",code);
-            editor.apply();
+            MyApplication.editor.putString("SMSCode",code);
+            MyApplication.editor.apply();
 
             // 创建普通字符型ClipData
             ClipData mClipData = ClipData.newPlainText("Label", code);

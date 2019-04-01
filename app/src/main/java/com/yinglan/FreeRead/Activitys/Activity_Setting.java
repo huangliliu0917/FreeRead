@@ -19,13 +19,16 @@ import com.flyco.dialog.widget.MaterialDialog;
 import com.flyco.dialog.widget.NormalDialog;
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
+import com.yinglan.FreeRead.BaseActivity;
+import com.yinglan.FreeRead.MyApplication;
 import com.yinglan.FreeRead.R;
+import com.yinglan.FreeRead.Utils.MyActivityManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class Activity_Setting extends AppCompatActivity {
+public class Activity_Setting extends BaseActivity {
 
     @BindView(R.id.setting_titleBar)
     TitleBar settingTitleBar;
@@ -140,6 +143,9 @@ public class Activity_Setting extends AppCompatActivity {
                         new OnBtnClickL() {
                             @Override
                             public void onBtnClick() {
+                                MyApplication.editor.putBoolean("user_Logined",false);
+                                MyApplication.editor.apply();
+                                MyActivityManager.getAppManager().finishAllActivity();
                                 normalDialog.dismiss();
                             }
                         });

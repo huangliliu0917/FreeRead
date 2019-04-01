@@ -13,6 +13,7 @@ import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
 import com.yinglan.FreeRead.Adapters.Adapter_NewsList;
 import com.yinglan.FreeRead.Base.BaseNews;
+import com.yinglan.FreeRead.BaseActivity;
 import com.yinglan.FreeRead.R;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Activity_News extends AppCompatActivity {
+public class Activity_News extends BaseActivity {
 
     @BindView(R.id.news_titleBar)
     TitleBar newsTitleBar;

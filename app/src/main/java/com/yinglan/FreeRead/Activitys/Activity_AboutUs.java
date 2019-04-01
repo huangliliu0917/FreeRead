@@ -9,6 +9,7 @@ import com.hjq.bar.TitleBar;
 import com.tsy.sdk.myokhttp.MyOkHttp;
 import com.tsy.sdk.myokhttp.response.IResponseHandler;
 import com.tsy.sdk.myokhttp.response.JsonResponseHandler;
+import com.yinglan.FreeRead.BaseActivity;
 import com.yinglan.FreeRead.Constant.HttpConstant;
 import com.yinglan.FreeRead.R;
 import com.yinglan.FreeRead.Utils.LogUtils;
@@ -21,7 +22,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Activity_AboutUs extends AppCompatActivity {
+public class Activity_AboutUs extends BaseActivity {
 
     @BindView(R.id.aboutUs_titleBar)
     TitleBar aboutUsTitleBar;

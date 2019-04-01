@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
+import com.yinglan.FreeRead.BaseActivity;
 import com.yinglan.FreeRead.R;
 import com.yinglan.FreeRead.Utils.StringUtils;
 
@@ -18,7 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class Activity_AskQuestion extends AppCompatActivity {
+public class Activity_AskQuestion extends BaseActivity {
 
     @BindView(R.id.askQuestion_titleBar)
     TitleBar askQuestionTitleBar;

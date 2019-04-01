@@ -28,7 +28,9 @@ import com.yinglan.FreeRead.Activitys.Activity_FindPassword;
 import com.yinglan.FreeRead.Activitys.Activity_Register;
 import com.yinglan.FreeRead.Activitys.Activity_UserAgreement;
 import com.yinglan.FreeRead.Activitys.MainActivity;
+import com.yinglan.FreeRead.Constant.HttpConnect;
 import com.yinglan.FreeRead.Constant.HttpConstant;
+import com.yinglan.FreeRead.Imp.MakeActivityDoSomething;
 import com.yinglan.FreeRead.R;
 import com.yinglan.FreeRead.Utils.StringUtils;
 import com.yinglan.FreeRead.wxapi.WXUtils;
@@ -47,7 +49,7 @@ import butterknife.Unbinder;
  * Created by Frank on 2019/3/28
  * Introduce : ${Text}
  */
-public class Fragment_Login_UsePassword extends Fragment {
+public class Fragment_Login_UsePassword extends Fragment implements MakeActivityDoSomething {
 
 
     @BindView(R.id.select_login_usepassword_ZiDong)
@@ -116,14 +118,10 @@ public class Fragment_Login_UsePassword extends Fragment {
                         Toast.makeText(context,"手机号错误",Toast.LENGTH_SHORT).show();
                     }else{
 
-                        if (loginWithPassword(userName,userPassword)){
-                            intent = new Intent(context,MainActivity.class);
-                            startActivity(intent);
-                            getActivity().finish();
-                        }else{
-                            Toast.makeText(context,"用户信息错误",Toast.LENGTH_SHORT).show();
-                        }
-
+                        Map<String,String> loginData = new HashMap<>();
+                        loginData.put("PhoneNumber",userName);
+                        loginData.put("Password",userPassword);
+                        HttpConnect.loginWithPassword(context,loginData,this);
                     }
                 }
 
@@ -155,6 +153,7 @@ public class Fragment_Login_UsePassword extends Fragment {
                         new OnBtnClickL() {
                             @Override
                             public void onBtnClick() {
+                                normalDialog.dismiss();
                                 WXUtils.wxLogin(context);
                             }
                         });
@@ -204,30 +203,8 @@ public class Fragment_Login_UsePassword extends Fragment {
     }
 
 
-    /**
-     * @param userName 用户名
-     * @param userPassword 密码
-     * @return
-     */
-    public boolean loginWithPassword(String userName, String userPassword) {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("userName", userName);
-        params.put("userPassword", userPassword);
-
-        MyOkHttp.get().post(context, HttpConstant.login_with_password, params, new JsonResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, JSONObject response) {
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, String error_msg) {
-
-            }
-        });
-
-        return true;
+    @Override
+    public void doFinish() {
+        getActivity().finish();
     }
-
-
 }

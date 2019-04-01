@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:id="@+id/task_chaoji"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/space15"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/item_task_icon"
+                    android:src="@mipmap/icon_tehuirenwu"
+                    android:adjustViewBounds="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="@dimen/space15"
+                    android:layout_marginLeft="@dimen/space15"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/item_task_title"
+                        android:text="超级特惠任务"
+                        android:textColor="@color/colorGray3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"/>
+
+
+                    <TextView
+                        android:id="@+id/item_task_info"
+                        android:text="今天下2笔满20元订单"
+                        android:textSize="@dimen/font12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space5"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"/>
+
+
+                    <TextView
+                        android:id="@+id/item_task_jiangli"
+                        android:text="奖励金+4"
+                        android:textColor="@color/colorRed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space5"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"/>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/item_task_receive"
+                    android:text="null"
+                    android:background="@drawable/shape_button5"
+                    android:textColor="@color/colorYellow1"
+                    android:layout_width="@dimen/space80"
+                    android:layout_height="@dimen/space35"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space1"
+                android:background="@color/colorGray2"/>
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space1"
+            android:background="@color/colorGray2"/>
+
+</LinearLayout>

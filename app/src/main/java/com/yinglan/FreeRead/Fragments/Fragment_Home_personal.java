@@ -1,7 +1,10 @@
 package com.yinglan.FreeRead.Fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +19,12 @@ import com.yinglan.FreeRead.Activitys.Activity_NormalQuestion;
 import com.yinglan.FreeRead.Activitys.Activity_OnlineHelper;
 import com.yinglan.FreeRead.Activitys.Activity_Setting;
 import com.yinglan.FreeRead.Activitys.Activity_TiXian;
+import com.yinglan.FreeRead.Constant.HttpConnect;
+import com.yinglan.FreeRead.MyApplication;
 import com.yinglan.FreeRead.R;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,22 +57,46 @@ public class Fragment_Home_personal extends BaseFragment {
     Unbinder unbinder;
     private String mTitle = "DefaultValue";
     private View view;
+    private Context context;
     private Intent intent;
     /*懒加载处理*/
     private boolean mHasLoadedOnce = false;
     private boolean isPrepared = false;
+
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    };
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home_personal, null);
         unbinder = ButterKnife.bind(this, view);
         intent = new Intent();
+        context = getContext();
 
         isPrepared = true;
         lazyLoad();
 
+        initNet();
+
         return view;
     }
+
+    public void initNet(){
+
+        Map<String,String> params = new HashMap<>();
+        params.put("userId",MyApplication.sharedPreferences.getString("user_id",""));
+
+        HttpConnect.getProfileIncomeOfMediaPlatform(context, params, handler);
+    }
+
+
 
     public static TextFragment newInstance(String title) {
         Bundle bundle = new Bundle();

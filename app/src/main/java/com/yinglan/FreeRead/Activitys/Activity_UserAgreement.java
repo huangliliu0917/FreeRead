@@ -8,12 +8,13 @@ import android.view.View;
 
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
+import com.yinglan.FreeRead.BaseActivity;
 import com.yinglan.FreeRead.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Activity_UserAgreement extends AppCompatActivity {
+public class Activity_UserAgreement extends BaseActivity {
 
     @BindView(R.id.userAgreement_titleBar)
     TitleBar userAgreementTitleBar;

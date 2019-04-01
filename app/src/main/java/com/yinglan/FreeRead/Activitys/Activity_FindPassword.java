@@ -15,7 +15,10 @@ import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
 import com.tsy.sdk.myokhttp.MyOkHttp;
 import com.tsy.sdk.myokhttp.response.JsonResponseHandler;
+import com.yinglan.FreeRead.BaseActivity;
+import com.yinglan.FreeRead.Constant.HttpConnect;
 import com.yinglan.FreeRead.Constant.HttpConstant;
+import com.yinglan.FreeRead.Imp.MakeActivityDoSomething;
 import com.yinglan.FreeRead.R;
 import com.yinglan.FreeRead.Utils.CountDownTimerUtils;
 import com.yinglan.FreeRead.Utils.StringUtils;
@@ -29,7 +32,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class Activity_FindPassword extends AppCompatActivity {
+public class Activity_FindPassword extends BaseActivity implements MakeActivityDoSomething {
 
     @BindView(R.id.findPassword_titleBar)
     TitleBar findPasswordTitleBar;
@@ -120,10 +123,13 @@ public class Activity_FindPassword extends AppCompatActivity {
                         Toast.makeText(context,"手机号错误",Toast.LENGTH_SHORT).show();
                     }else if(StringUtils.isSame(checkNum,sharedPreferences.getString("SMSCode",""))){
                         Toast.makeText(context,"验证码错误",Toast.LENGTH_SHORT).show();
-                    }else if(updateLoginPassword(phoneNum1,checkNum,password)){
-                        intent = new Intent(context,MainActivity.class);
-                        startActivity(intent);
-                        finish();
+                    }else{
+
+                        Map<String,String> params = new HashMap<>();
+                        params.put("PhoneNumber",phoneNum1);
+                        params.put("Password",password);
+
+                        HttpConnect.forgetPassword(context,params,this);
                     }
                 }
                 break;
@@ -131,34 +137,8 @@ public class Activity_FindPassword extends AppCompatActivity {
     }
 
 
-    /**
-     * 忘记密码
-     * @param phoneNum1
-     * @param checkNum
-     * @param password
-     * @return
-     */
-    public boolean updateLoginPassword(String phoneNum1, String checkNum, String password){
-
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("phoneNum1", phoneNum1);
-        params.put("checkNum", checkNum);
-        params.put("password", password);
-
-        MyOkHttp.get().post(context, HttpConstant.forgetPassword, params, new JsonResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, JSONObject response) {
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, String error_msg) {
-
-            }
-        });
-
-        return true;
+    @Override
+    public void doFinish() {
+        finish();
     }
-
-
 }

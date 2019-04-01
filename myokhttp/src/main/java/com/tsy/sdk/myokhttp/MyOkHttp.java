@@ -23,6 +23,7 @@ import java.io.InputStream;
 import java.net.FileNameMap;
 import java.net.URLConnection;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -47,6 +48,8 @@ public class MyOkHttp {
 
     public MyOkHttp() {
         client = new OkHttpClient();
+        client.newBuilder().connectTimeout(10,TimeUnit.SECONDS)
+        .readTimeout(20,TimeUnit.SECONDS).build();
     }
 
     /**
@@ -117,7 +120,6 @@ public class MyOkHttp {
      */
     public void post(Context context, final String url, final String dataInfo, final IResponseHandler responseHandler) {
         //post builder 参数
-
         RequestBody requestBody = FormBody.create(MediaType.parse("application/json; charset=utf-8")
                 , dataInfo);
 
@@ -136,8 +138,6 @@ public class MyOkHttp {
                     .tag(context)
                     .build();
         }
-
-
         client.newCall(request).enqueue(new MyCallback(new Handler(), responseHandler));
     }
 
@@ -182,17 +182,52 @@ public class MyOkHttp {
         //发起request
         if(context == null) {
             request = new Request.Builder()
-                    .url(url)
+                    .url(get_url)
                     .build();
         } else {
             request = new Request.Builder()
-                    .url(url)
+                    .url(get_url)
                     .tag(context)
                     .build();
         }
 
         client.newCall(request).enqueue(new MyCallback(new Handler(), responseHandler));
     }
+
+    /**
+     * get 请求
+     * @param context 发起请求的context
+     * @param url url
+     * @param params 参数
+     * @param responseHandler 回调
+     */
+    public void get1(Context context, final String url, final Map<String, String> params, final IResponseHandler responseHandler) {
+        //拼接url
+        String get_url = url;
+        if(params != null && params.size() > 0) {
+            int i = 0;
+            for (Map.Entry<String, String> entry : params.entrySet()) {
+                get_url = get_url + "/" + entry.getValue();
+            }
+        }
+
+        Request request;
+
+        //发起request
+        if(context == null) {
+            request = new Request.Builder()
+                    .url(get_url)
+                    .build();
+        } else {
+            request = new Request.Builder()
+                    .url(get_url)
+                    .tag(context)
+                    .build();
+        }
+
+        client.newCall(request).enqueue(new MyCallback(new Handler(), responseHandler));
+    }
+
 
     /**
      * 上传文件

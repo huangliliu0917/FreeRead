@@ -1,11 +1,14 @@
 package com.yinglan.FreeRead.Fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +16,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.flyco.dialog.listener.OnBtnClickL;
+import com.flyco.dialog.widget.NormalDialog;
 import com.yinglan.FreeRead.Activitys.Activity_Home_NewsInfo;
 import com.yinglan.FreeRead.Activitys.Activity_QianDao;
 import com.yinglan.FreeRead.Activitys.Activity_Task;
@@ -21,6 +26,7 @@ import com.yinglan.FreeRead.Activitys.Activity_TiXian;
 import com.yinglan.FreeRead.Activitys.MainActivity;
 import com.yinglan.FreeRead.Imp.OnPagerSelectLister;
 import com.yinglan.FreeRead.R;
+import com.yinglan.FreeRead.Utils.CheckSoftWare;
 import com.yinglan.FreeRead.Utils.NoScrollViewPager;
 
 import butterknife.BindView;
@@ -67,6 +73,7 @@ public class Fragment_Home_makeMoney extends BaseFragment {
     private Unbinder unbinder;
     private Intent intent;
     private NoScrollViewPager mViewPager;
+    private Context context;
 
     /*懒加载处理*/
     private boolean mHasLoadedOnce = false;
@@ -84,6 +91,7 @@ public class Fragment_Home_makeMoney extends BaseFragment {
 
         view = inflater.inflate(R.layout.fragment_home_make_money, null);
         unbinder = ButterKnife.bind(this, view);
+        context = getContext();
         isPrepared = true;
         lazyLoad();
 
@@ -102,7 +110,41 @@ public class Fragment_Home_makeMoney extends BaseFragment {
 
             /*开始赚钱*/
             case R.id.btn_home_startMakeMoney:
-                Toast.makeText(getContext(),"开始赚钱",Toast.LENGTH_SHORT).show();
+
+                if (CheckSoftWare.isAvilible(context,"com.coohua.xinwenzhuan") &&
+                        CheckSoftWare.isAvilible(context,"com.jifen.qukan") &&
+                        CheckSoftWare.isAvilible(context,"com.sohu.infonews")){
+
+                    btnHomeStartMakeMoney.setBackgroundColor(getResources().getColor(R.color.colorGray1));
+
+                    Toast.makeText(getContext(),"开始赚钱",Toast.LENGTH_SHORT).show();
+
+                }else{
+                    final NormalDialog normalDialog = new NormalDialog(context);
+                    normalDialog.isTitleShow(false)//
+                            .bgColor(Color.parseColor("#ffffff"))//
+                            .btnNum(1)
+                            .btnText("确定")
+                            .btnTextColor(getResources().getColor(R.color.colorGray))
+                            .cornerRadius(5)//
+                            .content("本机暂未安装阅读类软件，请前往应用商城下载")//
+                            .contentGravity(Gravity.CENTER)//
+                            .contentTextColor(Color.parseColor("#454545"))//
+                            .dividerColor(Color.parseColor("#222222"))//
+                            .btnTextSize(15.5f, 15.5f)//
+                            .btnTextColor(Color.parseColor("#3b9cf2"), Color.parseColor("#3b9cf2"))//
+                            .widthScale(0.85f)//
+                            .show();
+
+                    normalDialog.setOnBtnClickL(
+                            new OnBtnClickL() {
+                                @Override
+                                public void onBtnClick() {
+                                    normalDialog.dismiss();
+                                }
+                            });
+                }
+
                 break;
 
             /*进入签到页面*/
