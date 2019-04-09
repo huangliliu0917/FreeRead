@@ -99,7 +99,7 @@ public class Fragment_Home_readNews extends BaseFragment {
         context = getContext();
 
         isPrepared = true;
-        lazyLoad();
+//        lazyLoad();
 
         initTitles();
 

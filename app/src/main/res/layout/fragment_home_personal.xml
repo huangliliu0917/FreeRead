@@ -124,42 +124,14 @@
 
 
                         <TextView
-                            android:text="100"
+                            android:id="@+id/souhu_dayInput"
+                            android:text="0"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"/>
 
                         <TextView
-                            android:text="今日收益（元）"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"/>
-
-
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="@dimen/space3"
-                        android:layout_height="match_parent"
-                        android:background="@color/colorGray2"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center">
-
-
-                        <TextView
-                            android:text="100"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"/>
-
-                        <TextView
-                            android:text="总收益（元）"
+                            android:text="今日收益（金币）"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"/>
@@ -182,13 +154,44 @@
 
 
                         <TextView
-                            android:text="120"
+                            android:id="@+id/souhu_totalInput"
+                            android:text="0"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"/>
 
                         <TextView
-                            android:text="今日阅读（秒）"
+                            android:text="总收益（金币）"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"/>
+
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="@dimen/space3"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorGray2"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+
+                        <TextView
+                            android:id="@+id/souhu_readSeconds"
+                            android:text="0"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:text="今日阅读（分）"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"/>
@@ -260,42 +263,14 @@
 
 
                         <TextView
-                            android:text="100"
+                            android:id="@+id/tao_dayInput"
+                            android:text="0"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"/>
 
                         <TextView
-                            android:text="今日收益（元）"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"/>
-
-
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="@dimen/space3"
-                        android:layout_height="match_parent"
-                        android:background="@color/colorGray2"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center">
-
-
-                        <TextView
-                            android:text="100"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"/>
-
-                        <TextView
-                            android:text="总收益（元）"
+                            android:text="今日收益（金币）"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"/>
@@ -318,13 +293,44 @@
 
 
                         <TextView
-                            android:text="120"
+                            android:id="@+id/tao_totalInput"
+                            android:text="0"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"/>
 
                         <TextView
-                            android:text="今日阅读（秒）"
+                            android:text="总收益（金币）"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"/>
+
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="@dimen/space3"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorGray2"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+
+                        <TextView
+                            android:id="@+id/tao_readSeconds"
+                            android:text="0"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:text="今日阅读（分）"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"/>
@@ -395,42 +401,14 @@
 
 
                         <TextView
-                            android:text="100"
+                            android:id="@+id/qu_dayInput"
+                            android:text="0"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"/>
 
                         <TextView
-                            android:text="今日收益（元）"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"/>
-
-
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="@dimen/space3"
-                        android:layout_height="match_parent"
-                        android:background="@color/colorGray2"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center">
-
-
-                        <TextView
-                            android:text="100"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"/>
-
-                        <TextView
-                            android:text="总收益（元）"
+                            android:text="今日收益（金币）"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"/>
@@ -453,13 +431,44 @@
 
 
                         <TextView
-                            android:text="120"
+                            android:id="@+id/qu_totalInput"
+                            android:text="0"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"/>
 
                         <TextView
-                            android:text="今日阅读（秒）"
+                            android:text="总收益（金币）"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"/>
+
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="@dimen/space3"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorGray2"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+
+                        <TextView
+                            android:id="@+id/qu_readSeconds"
+                            android:text="0"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:text="今日阅读（分）"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"/>

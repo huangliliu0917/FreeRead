@@ -39,6 +39,8 @@ public class HttpConstant {
     public static final String readNewsArticlePager = URL+"ReadNewsArticlePager";
     /*各平台收益（finish）*/
     public static final String getProfileIncomeOfMediaPlatform = URL+"GetProfileIncomeOfMediaPlatform";
+    /*写入趣头条收益数据*/
+    public static final String writeTolnComeRecord = URL+"WriteToIncomeRecord";
 
 
 

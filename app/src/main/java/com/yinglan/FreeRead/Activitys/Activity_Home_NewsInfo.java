@@ -1,46 +1,42 @@
 package com.yinglan.FreeRead.Activitys;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.webkit.JavascriptInterface;
-import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
-import com.yinglan.FreeRead.BaseActivity;
 import com.yinglan.FreeRead.R;
+import com.yinglan.FreeRead.Utils.StringUtils;
 import com.yinglan.FreeRead.Utils.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Activity_Home_NewsInfo extends BaseActivity {
+public class Activity_Home_NewsInfo extends Activity {
 
+
+    @BindView(R.id.NewsInfo_titleBar)
+    TitleBar NewsInfoTitleBar;
     @BindView(R.id.home_newsInfo_web)
     WebView homeNewsInfoWeb;
     @BindView(R.id.home_newsInfo_progress)
     ProgressBar homeNewsInfoProgress;
-    @BindView(R.id.NewsInfo_titleBar)
-    TitleBar NewsInfoTitleBar;
-
     private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity__home__news_info);
+        setContentView(R.layout.activity_home_news_info);
         ButterKnife.bind(this);
 
         String str = getIntent().getStringExtra("url");
@@ -70,119 +66,100 @@ public class Activity_Home_NewsInfo extends BaseActivity {
 
             @Override
             public void onRightClick(View v) {
-                ToastUtils.showShort(context,"进入分享");
+                ToastUtils.showShort(context, "进入分享");
             }
         });
 
-        /*webView相关配置*/
-        homeNewsInfoWeb.loadUrl("file:///android_asset/test.html");//加载asset文件夹下html
-        homeNewsInfoWeb.loadUrl(str);//加载url
-        homeNewsInfoWeb.addJavascriptInterface(this, "android");//添加js监听 这样html就能调用客户端
-        homeNewsInfoWeb.setWebChromeClient(webChromeClient);
-        homeNewsInfoWeb.setWebViewClient(webViewClient);
-        WebSettings webSettings = homeNewsInfoWeb.getSettings();
-        webSettings.setJavaScriptEnabled(true);//允许使用js
 
-        /**
-         * LOAD_CACHE_ONLY: 不使用网络，只读取本地缓存数据
-         * LOAD_DEFAULT: （默认）根据cache-control决定是否从网络上取数据。
-         * LOAD_NO_CACHE: 不使用缓存，只从网络获取数据.
-         * LOAD_CACHE_ELSE_NETWORK，只要本地有，无论是否过期，或者no-cache，都使用缓存中的数据。
-         */
-        webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);//不使用缓存，只从网络获取数据.
+        WebSettings ws = homeNewsInfoWeb.getSettings();
+        // 适配屏幕
+        ws.setUseWideViewPort(true);
+        ws.setLoadWithOverviewMode(true);
+        ws.setDomStorageEnabled(true);// 启用dom存储(关键就是这句)，貌似网上twitter显示有问题也是这个属性没有设置的原因
+        ws.setJavaScriptEnabled(true); // 设置JavaScript是否可用，（是否允许视频的播放）
 
-        //支持屏幕缩放
-        webSettings.setSupportZoom(true);
-        webSettings.setBuiltInZoomControls(true);
+        ws.setJavaScriptCanOpenWindowsAutomatically(true);
+        ws.setPluginState(WebSettings.PluginState.ON);
+        // settings.setPluginsEnabled(true);
+        ws.setAllowFileAccess(true);
+        ws.setBuiltInZoomControls(true);// 隐藏缩放按钮
+        ws.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);// 排版适应屏幕
+        ws.setLoadWithOverviewMode(true);// setUseWideViewPort方法设置webview推荐使用的窗口。setLoadWithOverviewMode方法是设置webview加载的页面的模式。
+        ws.setSavePassword(true);
+        ws.setSaveFormData(true);// 保存表单数据
+        homeNewsInfoWeb.setSaveEnabled(false);
+        ws.setSaveFormData(false);
+        // 下面的一句话是必须的，必须要打开javaScript不然所做一切都是徒劳的
+        ws.setSupportZoom(false);
 
-        //不显示webview缩放按钮
-        //        webSettings.setDisplayZoomControls(false);
+        homeNewsInfoWeb.setWebChromeClient(new WebChromeClient()); // 允许弹窗作用
+        homeNewsInfoWeb.setWebViewClient(new WebViewClient() { // 不允许UC调到浏览器上面去
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view,
+                                                    String url) {
+                return false;
+            }
+        });
+        if (StringUtils.isEmpty(str)) {
+            homeNewsInfoWeb.loadUrl(str);
+        }
+
+        homeNewsInfoWeb.setWebViewClient(new WebViewClient() {
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+
+//                try {
+//                    if (pd != null) {
+//                        pd.dismiss();
+//                    }
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+            }
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                // TODO Auto-generated method stub
+                super.onPageStarted(view, url, favicon);
+//                if (pd == null) {
+//                    pd = ProgressDialog.show(Activity_Home_NewsInfo.this, null,
+//                            "正在加载...", true, false);
+//                    pd.setCancelable(true);
+//                } else {
+//                    if (!pd.isShowing()){
+//                        pd.show();
+//                    }
+//                }
+            }
+
+        });
+
     }
 
-    //WebViewClient主要帮助WebView处理各种通知、请求事件
-    private WebViewClient webViewClient = new WebViewClient() {
-        @Override
-        public void onPageFinished(WebView view, String url) {//页面加载完成
-            homeNewsInfoProgress.setVisibility(View.GONE);
-        }
-
-        @Override
-        public void onPageStarted(WebView view, String url, Bitmap favicon) {//页面开始加载
-            homeNewsInfoProgress.setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            Log.i("ansen", "拦截url:" + url);
-            if (url.equals("http://www.google.com/")) {
-                Toast.makeText(Activity_Home_NewsInfo.this, "国内不能访问google,拦截该url", Toast.LENGTH_LONG).show();
-                return true;//表示我已经处理过了
-            }
-            return super.shouldOverrideUrlLoading(view, url);
-        }
-
-    };
-
-    //WebChromeClient主要辅助WebView处理Javascript的对话框、网站图标、网站title、加载进度等
-    private WebChromeClient webChromeClient = new WebChromeClient() {
-        //不支持js的alert弹窗，需要自己监听然后通过dialog弹窗
-        @Override
-        public boolean onJsAlert(WebView webView, String url, String message, JsResult result) {
-            AlertDialog.Builder localBuilder = new AlertDialog.Builder(webView.getContext());
-            localBuilder.setMessage(message).setPositiveButton("确定", null);
-            localBuilder.setCancelable(false);
-            localBuilder.create().show();
-
-            //注意:
-            //必须要这一句代码:result.confirm()表示:
-            //处理结果为确定状态同时唤醒WebCore线程
-            //否则不能继续点击按钮
-            result.confirm();
-            return true;
-        }
-
-        //获取网页标题
-        @Override
-        public void onReceivedTitle(WebView view, String title) {
-            super.onReceivedTitle(view, title);
-            Log.i("ansen", "网页标题:" + title);
-        }
-
-        //加载进度回调
-        @Override
-        public void onProgressChanged(WebView view, int newProgress) {
-            homeNewsInfoProgress.setProgress(newProgress);
-        }
-    };
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        Log.i("ansen", "是否有上一个页面:" + homeNewsInfoWeb.canGoBack());
-        if (homeNewsInfoWeb.canGoBack() && keyCode == KeyEvent.KEYCODE_BACK) {//点击返回按钮的时候判断有没有上一页
-            homeNewsInfoWeb.goBack(); // goBack()表示返回webView的上一页面
-            return true;
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+            if (homeNewsInfoWeb != null && homeNewsInfoWeb.canGoBack()) {
+                homeNewsInfoWeb.goBack();
+                return true;
+            } else {
+                return super.onKeyDown(keyCode, event);
+            }
+
         }
         return super.onKeyDown(keyCode, event);
     }
 
-    /**
-     * JS调用android的方法
-     *
-     * @param str
-     * @return
-     */
-    @JavascriptInterface //仍然必不可少
-    public void getClient(String str) {
-        Log.i("ansen", "html调用客户端:" + str);
-    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
-        //释放资源
-        homeNewsInfoWeb.destroy();
-        homeNewsInfoWeb = null;
+        if (homeNewsInfoWeb != null) {
+            homeNewsInfoWeb.destroy();
+        }
     }
-
 }

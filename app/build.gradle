@@ -58,4 +58,5 @@ dependencies {
     implementation files('libs/open_sdk_r6019_lite.jar')
     //gson
     implementation 'com.google.code.gson:gson:2.8.4'
+    implementation files('libs/tbs_sdk_thirdapp_v3.6.0.1310_43612.jar')
 }

@@ -7,7 +7,9 @@ import android.preference.PreferenceManager;
 
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.tauth.Tencent;
+import com.yinglan.FreeRead.Utils.LogUtils;
 import com.yinglan.FreeRead.Utils.MyActivityManager;
 import com.yinglan.FreeRead.Utils.NetRequest;
 
@@ -47,6 +49,8 @@ public class MyApplication extends Application {
         registerToWX();
         //注册QQ
         registerToQQ();
+        //腾讯X5WebView集成
+        initX5WebView();
 
     }
 
@@ -62,6 +66,24 @@ public class MyApplication extends Application {
 
     private void registerToQQ(){
         mTencent = Tencent.createInstance(QQ_APP_ID, this.getApplicationContext());
+    }
+
+
+    private void initX5WebView(){
+        QbSdk.PreInitCallback pb = new QbSdk.PreInitCallback() {
+            @Override
+            public void onCoreInitFinished() {
+
+            }
+
+            @Override
+            public void onViewInitFinished(boolean b) {
+
+            }
+        };
+
+
+        QbSdk.initX5Environment(context,pb);
     }
 
     public Context getContext() {

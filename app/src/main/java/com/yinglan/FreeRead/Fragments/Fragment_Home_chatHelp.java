@@ -1,6 +1,7 @@
 package com.yinglan.FreeRead.Fragments;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,7 @@ public class Fragment_Home_chatHelp extends BaseFragment {
         view = inflater.inflate(R.layout.fragment_home_wechat_helper, null);
         unbinder = ButterKnife.bind(this, view);
         isPrepared = true;
-        lazyLoad();
+//        lazyLoad();
         return view;
     }
 

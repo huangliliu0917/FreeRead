@@ -62,6 +62,7 @@
         </receiver>
         <!--接受短信验证码-->
 
+
         <!--QQ登录-->
         <activity
             android:name="com.tencent.tauth.AuthActivity"
